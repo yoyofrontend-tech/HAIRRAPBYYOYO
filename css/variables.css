@@ -1,0 +1,31 @@
+:root {
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'Inter', sans-serif;
+
+  --neutral-950: #111111;
+  --neutral-900: #17181b;
+  --neutral-800: #24262a;
+  --neutral-700: #3a3f45;
+  --neutral-500: #8b9098;
+  --neutral-300: #d6d8dc;
+  --neutral-200: #edf0f3;
+  --neutral-100: #f8f9fb;
+  --neutral-50: #ffffff;
+
+  --sand-300: #f1e5d5;
+  --sand-500: #d9c1a3;
+  --rose-500: #d7a9b0;
+  --mauve-500: #b79dd7;
+  --gold-500: #d5b76a;
+  --pearl: rgba(255, 255, 255, 0.08);
+
+  --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.28);
+  --shadow-card: 0 16px 32px rgba(17, 17, 17, 0.18);
+  --radius-xl: 32px;
+  --radius-lg: 24px;
+  --radius-md: 18px;
+  --radius-sm: 12px;
+
+  --content-width: 1200px;
+  --transition: 220ms ease;
+}
