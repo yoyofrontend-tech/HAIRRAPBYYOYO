@@ -1,0 +1,12 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="75.0009" height="19" viewBox="0 0 75.0009 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Pagination Container">
+<circle id="Ellipse 9" cx="4.50011" cy="9.5" r="4.50011" fill="#EBECED"/>
+<circle id="Ellipse 11" cx="18.5003" cy="9.5" r="4.50011" fill="#EBECED"/>
+<g id="Active Page Indicator">
+<circle id="Ellipse 8" cx="37.5004" cy="9.50011" r="4.50011" fill="#735C00"/>
+<circle id="Ellipse 11_2" cx="37.5005" cy="9.5" r="8.5" stroke-width="2" stroke="#735C00"/>
+</g>
+<circle id="Ellipse 10" cx="56.5006" cy="9.5" r="4.50011" fill="#EBECED"/>
+<circle id="Ellipse 12" cx="70.5008" cy="9.5" r="4.50011" fill="#EBECED"/>
+</g>
+</svg>

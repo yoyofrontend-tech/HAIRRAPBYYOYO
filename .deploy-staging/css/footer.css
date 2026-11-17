@@ -1,0 +1,21 @@
+.site-footer{background:#22241f;color:#f7f4ee;padding:70px 0 0;font-family:Inter,sans-serif}
+.site-footer *{box-sizing:border-box}
+.site-footer a{color:inherit;text-decoration:none}
+.site-footer a:hover{text-decoration:underline;text-underline-offset:4px}
+.site-footer .footer-container{width:min(1320px,calc(100% - 48px));margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.5fr .8fr 1fr 1.2fr;gap:48px;padding-bottom:56px}
+.footer-brand-name{display:inline-block;font:700 21px/1.3 'Playfair Display',Georgia,serif;letter-spacing:.04em}
+.footer-brand p,.footer-column p,.footer-column address{color:#c4c4ba;font:14px/1.8 Manrope,Arial,sans-serif;font-style:normal;margin:14px 0 0}
+.footer-brand p{max-width:285px}
+.footer-column h2{color:#d8c394;font:700 10px/1.4 Inter,sans-serif;letter-spacing:.15em;margin:3px 0 19px;text-transform:uppercase}
+.footer-column nav,.footer-column .footer-links{display:grid;gap:12px}
+.footer-column nav a,.footer-links a{font:14px/1.45 Inter,sans-serif;color:#eeeae2}
+.footer-column address{margin:0}
+.footer-column .footer-link{display:inline-block;margin-top:14px;color:#e3d0a8;font:600 12px/1.5 Inter,sans-serif}
+.footer-cta{display:inline-flex;align-items:center;justify-content:center;gap:16px;margin-top:22px;padding:13px 18px;border:1px solid #d9c69c;border-radius:999px;color:#fff;font:600 12px/1.4 Inter,sans-serif}
+.site-footer .footer-cta:hover{background:#d9c69c;color:#22241f;text-decoration:none}
+.footer-bottom{display:flex;justify-content:space-between;gap:20px;padding:22px 0;border-top:1px solid #ffffff26;color:#b5b6ad;font:12px/1.5 Inter,sans-serif}
+.footer-bottom span:last-child{color:#d8c394}
+@media(max-width:900px){.footer-top{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px}}
+@media(max-width:600px){.site-footer{padding-top:52px}.site-footer .footer-container{width:calc(100% - 36px)}.footer-top{gap:34px 22px;padding-bottom:40px}.footer-brand{grid-column:1/-1}.footer-bottom{flex-direction:column;gap:5px}.footer-column nav a,.footer-links a{font-size:13px}}
+@media(max-width:360px){.footer-top{grid-template-columns:1fr}.footer-brand{grid-column:auto}}

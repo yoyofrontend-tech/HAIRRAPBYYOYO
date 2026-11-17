@@ -38,6 +38,7 @@ button {
   justify-content: center;
   width: 100%;
   min-height: 100vh;
+  min-height: 100svh;
   padding: 0;
   background: #000;
 }
@@ -52,7 +53,7 @@ button {
   align-items: center;
   justify-content: space-between;
   gap: 14px;
-  width: 76%;
+  width: min(76%, 720px);
   padding: 8px 18px;
   background: rgba(246, 245, 239, 0.74);
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -65,7 +66,7 @@ button {
   display: flex;
   align-items: center;
   flex: 0 0 auto;
-  width: 142px;
+  width: 122px;
 }
 
 .brand-mark img {
@@ -102,8 +103,11 @@ button {
 .hero-image {
   position: relative;
   isolation: isolate;
-  width: min(100%, calc((100vh - 70px) * 1.49));
-  aspect-ratio: 1.49;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  min-height: 100vh;
+  min-height: 100svh;
   margin: 0 auto;
   overflow: hidden;
   background: #777;
@@ -147,7 +151,7 @@ button {
   left: 50%;
   bottom: 12%;
   transform: translateX(-50%);
-  width: 78%;
+  width: min(78%, 740px);
   padding: 24px 24px 22px;
   border-radius: 28px;
   background: rgba(72, 72, 68, 0.34);
@@ -235,7 +239,7 @@ button {
   }
 
   .brand-mark {
-    width: 112px;
+    width: 132px;
   }
 
   .main-nav {
@@ -248,12 +252,6 @@ button {
 }
 
 @media (max-width: 560px) {
-  .hero-image {
-    width: 100%;
-    min-height: 100vh;
-    aspect-ratio: auto;
-  }
-
   .site-header {
     width: 94%;
     gap: 8px;
@@ -261,7 +259,7 @@ button {
   }
 
   .brand-mark {
-    width: 92px;
+    width: 142px;
   }
 
   .main-nav {
@@ -444,6 +442,8 @@ button {
 .story-note p {
   margin: 0;
 }
+.story-note p + p { margin-top: 16px; }
+.contact-detail p { margin: 8px 0 0; color: rgba(245, 241, 234, 0.76); font-size: 0.82rem; line-height: 1.65; }
 
 .page-intro {
   max-width: 720px;
@@ -655,7 +655,7 @@ button {
 
   .brand-mark,
   .site-header--interior .brand-mark {
-    width: 82px;
+    width: 132px;
   }
 
   .nav-toggle {
@@ -781,6 +781,12 @@ button {
   }
 }
 
+@media (min-width: 761px) and (max-width: 960px) {
+  .service-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 560px) {
   .booking-cta {
     padding: 24px;
@@ -791,3 +797,94 @@ button {
     flex-direction: column;
   }
 }
+
+
+/* SOCIAL MEDIA FLOATING ICONS */
+
+.floating-tools {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: absolute;
+  right: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.social-icon {
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  color: #222;
+  font-size: 21px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.18);
+}
+
+.social-icon:hover {
+  transform: scale(1.12);
+  color: #fff;
+}
+
+.social-icon.instagram:hover {
+  background: linear-gradient(
+    45deg,
+    #feda75 0%,
+    #fa7e1e 25%,
+    #d62976 50%,
+    #962fbf 75%,
+    #4f5bd5 100%
+  );
+  color: #fff;
+}
+
+.social-icon.facebook:hover {
+  background: #0866FF;
+  color: #fff;
+}
+
+.social-icon.youtube:hover {
+  background: #FF0000;
+}
+
+/* SOCIAL ICONS - MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  .floating-tools {
+    gap: 10px;
+    right: 12px;
+  }
+
+  .social-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 16px;
+  }
+}
+
+
+/* WhatsApp Booking Button */
+
+.whatsapp-booking-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.whatsapp-booking-btn .fa-whatsapp {
+    color: #25D366;
+    font-size: 23px;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.whatsapp-booking-btn span {
+    display: inline-block;
+}
+
