@@ -10,7 +10,7 @@ files = [Path('index.html')] + list(Path('pages').glob('*.html')) + list(Path('c
 refs = set()
 for path in files:
     text = path.read_text(encoding='utf-8')
-    refs.update(unquote(x) for x in re.findall(r'assets/images/[^\s\"\x27)<>]+', text))
+    refs.update(unquote(x) for x in re.findall(r'assets/(?:images|videos)/[^\s\"\x27)<>]+', text))
 files += [Path(p) for p in sorted(refs) if Path(p).is_file()]
 for file in files:
     dst = stage / file

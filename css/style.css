@@ -315,7 +315,7 @@ button {
 
 .interior-shell {
   min-height: 100vh;
-  padding: 26px 0 60px;
+  padding: 26px 0 0;
   background: #070707;
 }
 
@@ -324,7 +324,7 @@ button {
   top: 26px;
   left: auto;
   width: min(88%, 1160px);
-  margin: 0 auto 54px;
+  margin: 0 auto 32px;
   transform: none;
 }
 
@@ -447,7 +447,7 @@ button {
 
 .page-intro {
   max-width: 720px;
-  margin: 0 auto 48px;
+  margin: 0 auto 28px;
   text-align: center;
 }
 
@@ -464,7 +464,7 @@ button {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 22px;
-  padding-bottom: 38px;
+  padding-bottom: 28px;
 }
 
 .service-item {
@@ -645,7 +645,7 @@ button {
   .site-header--interior {
     top: 16px;
     width: 94%;
-    margin-bottom: 34px;
+    margin-bottom: 24px;
   }
 
   .site-header {

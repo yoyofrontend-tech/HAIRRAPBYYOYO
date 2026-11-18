@@ -51,7 +51,7 @@
 .about-contact-visit {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-  margin-top: clamp(28px, 5vw, 60px);
+  margin-top: clamp(20px, 3vw, 38px);
   scroll-margin-top: 20px;
   border: 1px solid #e9e2d7;
   border-radius: 22px;
