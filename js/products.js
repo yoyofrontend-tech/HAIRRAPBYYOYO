@@ -1,7 +1,7 @@
 const results = document.querySelector('#catalogue-sections');
 const filters = document.querySelector('#catalogue-filters');
 const search = document.querySelector('#product-search');
-const count = document.querySelector('#catalogue-count');
+const brandFilter = document.querySelector('#product-brand');
 const inventory = new Map(products.map(product => [product.id, product]));
 const previewSize = 4;
 const brandNames = {
@@ -27,6 +27,7 @@ function cardFor([id, photo, displayName, size]) {
   const card = element('article', 'catalogue-card');
   const visual = element('div', 'catalogue-visual');
   const img = document.createElement('img');
+  if (brand === 'MILK SHAKE (MS)') img.classList.add('catalogue-photo--milk-shake');
   img.src = photo;
   img.alt = displayName + (size ? ', ' + size : '');
   img.loading = 'lazy';
@@ -70,16 +71,16 @@ function renderGroup(group, matches, showPreview) {
   heading.tabIndex = -1;
   section.setAttribute('aria-labelledby', heading.id);
   const titleRow = element('div', 'catalogue-section-header');
-  titleRow.append(heading, element('span', 'catalogue-section-count', matches.length + (matches.length === 1 ? ' product' : ' products')));
+  titleRow.append(heading);
 
   const grid = element('div', 'catalogue-grid');
   grid.append(...(showPreview ? matches.slice(0, previewSize) : matches).map(cardFor));
   section.append(titleRow, grid);
 
   if (showPreview && matches.length > previewSize) {
-    const viewAll = element('button', 'catalogue-view-all', 'View all ' + matches.length + ' ↗');
+    const viewAll = element('button', 'catalogue-view-all', 'View all ↗');
     viewAll.type = 'button';
-    viewAll.setAttribute('aria-label', 'View all ' + matches.length + ' products in ' + group.name);
+    viewAll.setAttribute('aria-label', 'View all products in ' + group.name);
     viewAll.addEventListener('click', () => {
       selectCategory(group.key);
       document.getElementById(heading.id).focus({ preventScroll: true });
@@ -93,31 +94,43 @@ function renderGroup(group, matches, showPreview) {
 
 function renderProducts() {
   const terms = search.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  const selectedBrand = brandFilter.value;
   const visibleGroups = activeCategory ? productCatalogue.filter(group => group.key === activeCategory) : productCatalogue;
-  const showPreview = !activeCategory && terms.length === 0;
+  const showPreview = !activeCategory && !selectedBrand && terms.length === 0;
   const sections = [];
-  let total = 0;
 
   for (const group of visibleGroups) {
     const matches = group.products.filter(([id, , name, size]) => {
       const product = inventory.get(id);
+      if (selectedBrand === 'range:911') {
+        if (product.brand !== 'BIOTOP PROFESSIONAL' || !/\b911\b/.test(name)) return false;
+      } else if (selectedBrand && selectedBrand !== product.brand) {
+        return false;
+      }
       const searchable = [name, size, product.brand, brandNames[product.brand], group.name].join(' ').toLowerCase();
       return terms.every(term => searchable.includes(term));
     });
     if (matches.length === 0) continue;
-    total += matches.length;
     sections.push(renderGroup(group, matches, showPreview));
   }
 
-  count.textContent = total === 1 ? '1 product' : total + ' products';
   if (!sections.length) {
-    const message = activeCategory
-      ? 'No products match your search in this section. Try another search or select All products.'
-      : 'No products match your search. Try a different product or brand.';
-    sections.push(element('p', 'catalogue-empty', message));
+    sections.push(element('p', 'catalogue-empty', 'No products match these filters. Try a different search, brand, or category.'));
   }
   results.replaceChildren(...sections);
 }
+
+const brands = new Set(productCatalogue.flatMap(group => group.products.map(([id]) => inventory.get(id).brand)));
+const brandOptions = document.createElement('optgroup');
+brandOptions.label = 'Brands';
+const displayNameForBrand = brand => brandNames[brand] || brand;
+for (const brand of [...brands].sort((a, b) => displayNameForBrand(a).localeCompare(displayNameForBrand(b)))) {
+  brandOptions.append(new Option(displayNameForBrand(brand), brand));
+}
+const rangeOptions = document.createElement('optgroup');
+rangeOptions.label = 'Product ranges';
+rangeOptions.append(new Option('911 Quinoa (Biotop)', 'range:911'));
+brandFilter.append(brandOptions, rangeOptions);
 
 for (const { key, name } of [{ key: '', name: 'All products' }, ...productCatalogue]) {
   const button = element('button', 'catalogue-filter', name);
@@ -128,4 +141,5 @@ for (const { key, name } of [{ key: '', name: 'All products' }, ...productCatalo
   filters.append(button);
 }
 search.addEventListener('input', renderProducts);
+brandFilter.addEventListener('change', renderProducts);
 selectCategory('');

@@ -9,17 +9,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/homepage.css?v=9">
-  <link rel="stylesheet" href="css/interior.css">
+  <link rel="stylesheet" href="css/homepage.css?v=14">
+  <link rel="stylesheet" href="css/interior.css?v=2">
   <link rel="stylesheet" href="css/cafe.css">
 <link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
   <header class="header">
     <div class="topbar">
-      <a href="index.html" class="logo" aria-label="Hair Rap by Yoyo home"><img src="assets/images/figma-homepage/bff3f836-d0ee-4acc-8adc-6d3c8e11e24d.png" alt="Hair Rap by Yoyo"></a>
+      <a href="index.html" class="logo" aria-label="Hair Rap by Yoyo home" aria-current="page"><img src="assets/images/figma-homepage/bff3f836-d0ee-4acc-8adc-6d3c8e11e24d.png" alt="Hair Rap by Yoyo"></a>
       <nav class="navigation" id="navigation" aria-label="Main navigation">
-        <a href="index.html" aria-current="page">Home</a><a href="#services">Services</a><a href="#products">Products</a><a href="#portfolio">Portfolio</a><a href="#about">About Us</a><a href="pages/cafe.html">Café</a><a href="#contact">Contact</a>
+        <a href="#services">Services</a><a href="#products">Products</a><a href="#portfolio">Portfolio</a><a href="pages/cafe.html">Café</a><a href="#membership">Membership</a><a href="#about">About &amp; Contact</a>
       </nav>
       <a class="outline book-top" href="https://wa.me/919099938886?text=Hi%2C%20I%27d%20like%20to%20book%20an%20appointment%20at%20Hair%20Rap%20by%20Yoyo." target="_blank" rel="noopener noreferrer">Book Now</a>
       <button class="menu-toggle" aria-expanded="false" aria-controls="navigation" aria-label="Open menu"><span></span><span></span><span></span></button>
@@ -45,47 +45,50 @@
     <section class="section wrap services" id="services">
       <div class="service-intro"><p class="service-eyebrow">THE SERVICE MENU <span aria-hidden="true">✦</span> HAIR RAP BY YOYO</p><h2>Made for your moment<span class="service-title-dot">.</span></h2><p>From a fresh cut to your big day, discover a little more of what we do.</p></div>
       <ul class="service-links" aria-label="Featured services">
-        <li><a href="#service-prices" data-service-menu="women" data-service-group="Hair colour">
+        <li><button type="button" data-service-category="colour" aria-controls="price-menu" aria-pressed="false">
           <span>Hair</span>
           <span class="service-preview" aria-hidden="true"><img class="service-preview-colour" src="assets/images/portfolio/HRY04621.webp" alt="" loading="lazy" decoding="async"></span>
           <span>Color &amp; Balayage</span>
-        </a></li>
-        <li><a href="#service-prices" data-service-menu="women" data-service-group="Hair cut">
+        </button></li>
+        <li><button type="button" data-service-category="hair" aria-controls="price-menu" aria-pressed="false">
           <span>Haircut</span>
           <span class="service-preview" aria-hidden="true"><img class="service-preview-haircut" src="assets/images/portfolio/HRY04323.webp" alt="" loading="lazy" decoding="async"></span>
           <span>&amp; Styling</span>
-        </a></li>
-        <li><a href="#service-prices" data-service-menu="makeup" data-service-group="Bridal packages">
+        </button></li>
+        <li><button type="button" data-service-category="makeup" aria-controls="price-menu" aria-pressed="false">
           <span>Bridal</span>
           <span class="service-preview" aria-hidden="true"><span class="service-preview-photo service-preview-bridal"></span></span>
           <span>Makeup</span>
-        </a></li>
-        <li><a href="#service-prices" data-service-menu="women" data-service-group="Ethereal facials">
+        </button></li>
+        <li><button type="button" data-service-category="skin" aria-controls="price-menu" aria-pressed="false">
           <span>Skin &amp; Facial</span>
           <span class="service-preview" aria-hidden="true"><span class="service-preview-photo service-preview-facial"></span></span>
           <span>Treatments</span>
-        </a></li>
-        <li><a href="#service-prices" data-service-menu="women" data-service-group="Nail extensions &amp; nail art">
+        </button></li>
+        <li><button type="button" data-service-category="nails" aria-controls="price-menu" aria-pressed="false">
           <span>Nail</span>
           <span class="service-preview" aria-hidden="true"><span class="service-preview-photo service-preview-nails"></span></span>
           <span>Art &amp; Extensions</span>
-        </a></li>
-        <li><a href="#service-prices" data-service-menu="women" data-service-group="Head massage">
+        </button></li>
+        <li><button type="button" data-service-category="massage" aria-controls="price-menu" aria-pressed="false">
           <span>Luxury Head</span>
           <span class="service-preview" aria-hidden="true"><span class="service-preview-photo service-preview-massage"></span></span>
           <span>Massage</span>
-        </a></li>
+        </button></li>
       </ul>
-      <h3 class="service-prices-heading" id="service-prices">Service prices</h3>
-      <div class="service-switcher" aria-label="Choose a service menu">
-        <button type="button" data-menu="women" aria-pressed="true"><span class="menu-icon" aria-hidden="true">✳</span><span class="menu-choice"><strong>Women</strong><small>Hair &amp; beauty</small></span><span class="menu-arrow" aria-hidden="true">↗</span></button>
-        <button type="button" data-menu="men" aria-pressed="false"><span class="menu-icon" aria-hidden="true">✂</span><span class="menu-choice"><strong>Men</strong><small>Hair &amp; grooming</small></span><span class="menu-arrow" aria-hidden="true">↗</span></button>
-        <button type="button" data-menu="makeup" aria-pressed="false"><span class="menu-icon" aria-hidden="true">✧</span><span class="menu-choice"><strong>Makeup lounge</strong><small>Bridal &amp; groom</small></span><span class="menu-arrow" aria-hidden="true">↗</span></button>
-      </div>
-      <div class="menu-caption"><span>EXPLORE THE MENU</span><span>Select a category to view prices <span aria-hidden="true">↓</span></span></div>
-      <div class="price-menu" id="price-menu" aria-live="polite"></div>
+      <p class="menu-note" id="service-price-prompt" hidden>Choose a service category above to see prices.</p>
+      <section class="price-menu" id="price-menu" aria-labelledby="service-prices" hidden>
+        <h3 class="service-prices-heading" id="service-prices" tabindex="-1"></h3>
+        <div class="service-price-list">
+          <table class="service-price-table" aria-labelledby="service-prices">
+            <thead><tr><th scope="col">Service</th><th scope="col">Prices</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <ul class="service-price-notes"></ul>
+        <p class="menu-note">Prices are in Indian rupees. A dash means no price is listed. Prices may vary with hair length, density and consultation.</p>
+      </section>
       <noscript>Please enable JavaScript to view the service menu, or contact us on WhatsApp for prices.</noscript>
-      <p class="menu-note">Prices are in Indian rupees. A dash means no price is listed. Prices may vary with hair length, density and consultation.</p>
       <details class="booking-terms"><summary>Booking information &amp; terms</summary>
         <p>Salon visits are by prior appointment. A non-refundable ₹5,000 advance is required for bookings with YOYO Sir; send a payment screenshot as confirmation. Additional hair treatment charges may apply for extra length, volume or growth.</p>
         <p>Makeup lounge bookings require full advance payment and are non-refundable if cancelled by the client. A full refund applies if the salon cancels. Appointments between 5–9 AM cost an additional ₹2,000 per person. Late appointments are handled on a first-come, first-served basis.</p>
@@ -115,12 +118,146 @@
     <section class="section wrap products" id="products">
       <div class="product-heading"><div><p class="service-eyebrow">THE PRODUCT COLLECTION</p><h2>Care beyond the chair.</h2><p>Explore our product collection and ask us about availability and pricing.</p></div></div>
       <div class="catalogue-controls">
-        <label class="product-search"><span>Search products</span><input id="product-search" type="search" placeholder="Search by product or brand" autocomplete="off"></label>
+        <div class="catalogue-fields">
+          <label class="product-search"><span>Search products</span><input id="product-search" type="search" placeholder="Search by product or brand" autocomplete="off"></label>
+          <label class="product-brand"><span>Brand or range</span><select id="product-brand" aria-controls="catalogue-sections"><option value="">All brands and ranges</option></select></label>
+        </div>
         <div class="catalogue-filters" id="catalogue-filters" role="group" aria-label="Filter products by category"></div>
       </div>
-      <p class="catalogue-count" id="catalogue-count" role="status"></p>
       <div class="catalogue-sections" id="catalogue-sections"></div>
       <noscript>Please enable JavaScript to browse the product catalogue, or contact us for product information.</noscript>
+    </section>
+    <section class="membership section" id="membership" aria-labelledby="membership-title">
+      <div class="wrap">
+        <div class="membership-feature">
+          <div class="membership-intro">
+            <p class="service-eyebrow">HAIR RAP BY YOYO</p>
+            <h2 id="membership-title">Salon Membership</h2>
+            <p>Six annual plans for families, private groups and corporate teams. Find the right fit by comparing the price, plan value and number of members covered.</p>
+            <a class="interior-button interior-button--light" href="#membership-plans">Compare plans <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="membership-feature-art">
+            <img src="assets/images/membership/collection.webp" width="1026" height="572" alt="" loading="lazy" decoding="async">
+          </div>
+        </div>
+        <dl class="membership-inclusions">
+          <div><dt>One year of access</dt><dd>Everyone on the plan is covered for a full year under a single membership.</dd></div>
+          <div><dt>All salon services</dt><dd>Members can choose from our professional hair, skin and grooming services.</dd></div>
+          <div><dt>Private VIP lounge</dt><dd>All plans include lounge access. Estilo, Cabeza and Aqua include priority access.</dd></div>
+        </dl>
+        <h3 class="membership-plans-heading" id="membership-plans" tabindex="-1">Compare membership plans</h3>
+        <div class="membership-grid">
+          <article class="membership-card" aria-labelledby="membership-bella">
+            <div class="membership-card-art">
+              <img src="assets/images/membership/bella.webp" width="1026" height="560" alt="" loading="lazy" decoding="async">
+            </div>
+            <div class="membership-card-copy">
+              <header>
+                <h4 id="membership-bella">Bella</h4>
+                <p class="membership-type">HNI Family Membership</p>
+              </header>
+              <dl class="membership-prices">
+                <div><dt>You pay</dt><dd>₹50,000</dd></div>
+                <div><dt>Plan value</dt><dd>₹70,000</dd></div>
+              </dl>
+              <p class="membership-limit">Up to 4 members</p>
+              <p class="membership-benefit">For families who want regular salon care on one plan. All four members can use the salon’s hair, skin and grooming services throughout the year, with access to the private VIP lounge.</p>
+              <a class="interior-button" href="https://wa.me/919099938886?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20the%20Bella%20membership%20at%20Hair%20Rap%20by%20Yoyo." target="_blank" rel="noopener noreferrer">Enquire about Bella <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+          <article class="membership-card" aria-labelledby="membership-estilo">
+            <div class="membership-card-art">
+              <img src="assets/images/membership/estilo.webp" width="1026" height="475" alt="" loading="lazy" decoding="async">
+            </div>
+            <div class="membership-card-copy">
+              <header>
+                <h4 id="membership-estilo">Estilo</h4>
+                <p class="membership-type">HNI Family Membership</p>
+              </header>
+              <dl class="membership-prices">
+                <div><dt>You pay</dt><dd>₹1,00,000</dd></div>
+                <div><dt>Plan value</dt><dd>₹1,50,000</dd></div>
+              </dl>
+              <p class="membership-limit">Up to 4 members</p>
+              <p class="membership-benefit">For families who want priority attention during salon visits. The plan covers professional styling and grooming for four family members and includes priority access to the private VIP lounge.</p>
+              <a class="interior-button" href="https://wa.me/919099938886?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20the%20Estilo%20membership%20at%20Hair%20Rap%20by%20Yoyo." target="_blank" rel="noopener noreferrer">Enquire about Estilo <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+          <article class="membership-card" aria-labelledby="membership-cabeza">
+            <div class="membership-card-art">
+              <img src="assets/images/membership/cabeza.webp" width="1026" height="574" alt="" loading="lazy" decoding="async">
+            </div>
+            <div class="membership-card-copy">
+              <header>
+                <h4 id="membership-cabeza">Cabeza</h4>
+                <p class="membership-type">HNI Family Membership</p>
+              </header>
+              <dl class="membership-prices">
+                <div><dt>You pay</dt><dd>₹2,00,000</dd></div>
+                <div><dt>Plan value</dt><dd>₹2,50,000</dd></div>
+              </dl>
+              <p class="membership-limit">Up to 4 members</p>
+              <p class="membership-benefit">For four family members who want a higher plan value and access to the full salon menu. Members can book professional treatments using premium products and receive priority access to the private VIP lounge.</p>
+              <a class="interior-button" href="https://wa.me/919099938886?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20the%20Cabeza%20membership%20at%20Hair%20Rap%20by%20Yoyo." target="_blank" rel="noopener noreferrer">Enquire about Cabeza <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+          <article class="membership-card" aria-labelledby="membership-dios">
+            <div class="membership-card-art">
+              <img src="assets/images/membership/dios.webp" width="1026" height="560" alt="" loading="lazy" decoding="async">
+            </div>
+            <div class="membership-card-copy">
+              <header>
+                <h4 id="membership-dios">Dios</h4>
+                <p class="membership-type">HNI Dual Family Membership</p>
+              </header>
+              <dl class="membership-prices">
+                <div><dt>You pay</dt><dd>₹3,00,000</dd></div>
+                <div><dt>Plan value</dt><dd>₹3,50,000</dd></div>
+              </dl>
+              <p class="membership-limit">Up to 8 members</p>
+              <p class="membership-benefit">Designed for two households or one extended family. Up to eight members can share the plan, use the salon’s full range of services throughout the year and visit the private VIP lounge.</p>
+              <a class="interior-button" href="https://wa.me/919099938886?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20the%20Dios%20membership%20at%20Hair%20Rap%20by%20Yoyo." target="_blank" rel="noopener noreferrer">Enquire about Dios <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+          <article class="membership-card" aria-labelledby="membership-aqua">
+            <div class="membership-card-art">
+              <img src="assets/images/membership/aqua.webp" width="838" height="525" alt="" loading="lazy" decoding="async">
+            </div>
+            <div class="membership-card-copy">
+              <header>
+                <h4 id="membership-aqua">Aqua</h4>
+                <p class="membership-type">HNI Group Membership</p>
+              </header>
+              <dl class="membership-prices">
+                <div><dt>You pay</dt><dd>₹5,00,000</dd></div>
+                <div><dt>Plan value</dt><dd>₹6,00,000</dd></div>
+              </dl>
+              <p class="membership-limit">Up to 16 members</p>
+              <p class="membership-benefit">For large families, private groups or close communities of up to 16 people. Each member can use the full salon menu, and the plan includes dedicated, priority access to the private VIP lounge for group visits.</p>
+              <a class="interior-button" href="https://wa.me/919099938886?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20the%20Aqua%20membership%20at%20Hair%20Rap%20by%20Yoyo." target="_blank" rel="noopener noreferrer">Enquire about Aqua <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+          <article class="membership-card" aria-labelledby="membership-elegante">
+            <div class="membership-card-art">
+              <img src="assets/images/membership/elegante.webp" width="1026" height="646" alt="" loading="lazy" decoding="async">
+            </div>
+            <div class="membership-card-copy">
+              <header>
+                <h4 id="membership-elegante">Elegante</h4>
+                <p class="membership-type">Corporate Membership</p>
+              </header>
+              <dl class="membership-prices">
+                <div><dt>You pay</dt><dd>₹10,00,000</dd></div>
+                <div><dt>Plan value</dt><dd>₹12,00,000</dd></div>
+              </dl>
+              <p class="membership-limit">Up to 25 members</p>
+              <p class="membership-benefit">For organizations supporting professional grooming and employee well-being. Up to 25 team members can use the full salon menu for a year, with access to the private VIP lounge.</p>
+              <a class="interior-button" href="https://wa.me/919099938886?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20the%20Elegante%20membership%20at%20Hair%20Rap%20by%20Yoyo." target="_blank" rel="noopener noreferrer">Enquire about Elegante <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+        </div>
+        <p class="menu-note membership-note">Terms and conditions apply. Enquire with the salon for full membership details.</p>
+      </div>
     </section>
     <section class="portfolio section" id="portfolio"><div class="wrap">
       <div class="portfolio-heading"><div><p class="service-eyebrow">THE PORTFOLIO</p><h2>Made in our chair.</h2><p>A look at the styles, colour and moments created at HAIR RAP BY YOYO.</p></div><a class="outline portfolio-heading-link" href="https://www.instagram.com/hair_rap_by_yoyo/" target="_blank" rel="noopener noreferrer">See more on Instagram ↗</a></div>
@@ -149,52 +286,6 @@
         <article><img src="assets/images/figma-homepage/b3cb2892-f185-4e10-b956-9f1f7143e0a1.svg" alt=""><h3>Luxury Ambience</h3><p>Relax in a sophisticated environment designed for comfort, elegance, and self-care.</p></article>
       </div>
     </div></section>
-    <section class="interior-content" id="about" aria-labelledby="about-title">
-      <div class="interior-intro wrap">
-        <div class="intro-copy">
-          <p class="service-eyebrow">OUR STORY</p>
-          <h2 id="about-title" class="interior-title">Artistry with a <em>personal touch.</em></h2>
-          <p>Founded by YOYO, HAIR RAP BY YOYO brings together creative hairdressing, thoughtful consultation and a welcoming salon experience in Bodakdev.</p>
-          <div class="interior-actions">
-            <a class="interior-button interior-button--dark" href="#services">Explore our services ↗</a>
-            <a class="interior-button" href="#portfolio">See our work ↗</a>
-          </div>
-        </div>
-        <figure class="intro-image">
-          <img src="assets/images/portfolio/HRY02646.webp" alt="YOYO with a guest after styling her hair" loading="lazy">
-        </figure>
-      </div>
-      <div class="interior-story">
-        <div class="wrap story-layout">
-          <div>
-            <p class="service-eyebrow">THE JOURNEY</p>
-            <h3>From a love of learning to a space for <em>self-expression.</em></h3>
-          </div>
-          <div class="story-copy">
-            <p>After returning from the UK, YOYO discovered hairdressing and began learning from his barber. He practised with free haircuts at people’s homes, asking for feedback as he developed his craft.</p>
-            <p>His education continued with Vipul Chudasama and advanced training with Mounir in Dubai. In 2022, he established HAIR RAP BY YOYO in Ahmedabad.</p>
-          </div>
-        </div>
-      </div>
-      <div class="interior-values section wrap">
-        <div class="values-header">
-          <h3>Beauty that feels like you.</h3>
-          <p>Every visit is shaped around your style, your routine and the way you want to feel.</p>
-        </div>
-        <div class="values-grid">
-          <article><span aria-hidden="true">✳</span><h4>Personal consultation</h4><p>We start with a conversation about your hair, your routine and the look you have in mind.</p></article>
-          <article><span aria-hidden="true">✂</span><h4>Creative craftsmanship</h4><p>From cuts and colour to styling, grooming and makeup, our artists bring care to every detail.</p></article>
-          <article><span aria-hidden="true">✧</span><h4>A space to unwind</h4><p>Professional products, continued learning and a comfortable space make each visit special.</p></article>
-        </div>
-      </div>
-      <div class="team-section wrap">
-        <div class="team-card">
-          <h3>Meet the team.</h3>
-          <p>YOYO is the founder and creative director of HAIR RAP BY YOYO. Alongside co-founders Anuj and Garima, he works with a team of artists dedicated to hair and beauty.</p>
-          <a class="interior-button interior-button--dark" href="#contact">Come say hello ↗</a>
-        </div>
-      </div>
-    </section>
     <section class="reviews section" id="reviews"><div class="wrap">
       <div class="section-heading"><div><h2>Reviews from our Clients</h2><p>A few words shared by visitors to our Ahmedabad salon.</p></div><a class="outline" href="https://www.justdial.com/Ahmedabad/HAIR-RAP-BY-YOYO-Satellite/079PXX79-XX79-201126114030-D4G9_BZDET/reviews" target="_blank" rel="noopener noreferrer">Read all reviews ↗</a></div>
       <div class="review-grid">
@@ -203,59 +294,49 @@
         <article><span class="quote-mark" aria-hidden="true">“</span><blockquote>“The salon was highly professional.”</blockquote><div class="reviewer"><span class="reviewer-initial" aria-hidden="true">N</span><div><b>NISHI PATEL</b><span>10 November 2023 · Justdial</span></div></div><a class="review-source" href="https://www.justdial.com/Ahmedabad/HAIR-RAP-BY-YOYO-Satellite/079PXX79-XX79-201126114030-D4G9_BZDET/reviews" target="_blank" rel="noopener noreferrer">Read on Justdial ↗</a></article>
       </div>
     </div></section>
-    <section class="interior-content" id="contact" aria-labelledby="contact-title">
-      <div class="contact-hero wrap">
-        <p class="service-eyebrow">GET IN TOUCH</p>
-        <h2 id="contact-title" class="interior-title">Let’s plan your <em>next look.</em></h2>
-        <p>Questions about a service or ready for a little time for yourself? We’re here to help.</p>
-      </div>
-      <div class="contact-main wrap">
-        <div class="contact-cards">
-          <article class="contact-card">
-            <span class="contact-icon" aria-hidden="true">⌖</span>
-            <div>
-              <h3>Visit the salon</h3>
-              <address>1st Floor, Shilp Satved, Sindhubhavan Road, opposite Mango Restaurant, above HDFC Bank, PRL Colony, Bodakdev, Ahmedabad, Gujarat 380054</address>
-              <a href="https://www.google.com/maps/search/?api=1&amp;query=Hair+Rap+by+Yoyo+Shilp+Satved+Ahmedabad" target="_blank" rel="noopener noreferrer">Get directions ↗</a>
-            </div>
-          </article>
-          <article class="contact-card">
-            <span class="contact-icon" aria-hidden="true">↗</span>
-            <div>
-              <h3>Call or email</h3>
-              <p><a href="tel:+919099938886">+91 90999 38886</a><br><a href="mailto:hello@hairrapbyyoyo.com">hello@hairrapbyyoyo.com</a></p>
-            </div>
-          </article>
-          <article class="contact-card">
-            <span class="contact-icon" aria-hidden="true">◷</span>
-            <div>
-              <h3>Opening hours</h3>
-              <p>Daily, 10:00 AM – 9:00 PM</p>
-              <a href="https://www.instagram.com/hair_rap_by_yoyo/" target="_blank" rel="noopener noreferrer">Follow us on Instagram ↗</a>
-            </div>
-          </article>
-        </div>
-        <div class="appointment-card">
-          <div>
-            <h3>Ready for a little <em>you time?</em></h3>
-            <p>Message us on WhatsApp to discuss your preferred service and appointment time.</p>
-            <a class="interior-button interior-button--light" href="https://wa.me/919099938886?text=Hi%2C%20I%27d%20like%20to%20book%20an%20appointment%20at%20Hair%20Rap%20by%20Yoyo." target="_blank" rel="noopener noreferrer">Book an appointment ↗</a>
+    <section class="about-contact section" id="about" aria-labelledby="about-title">
+      <div class="wrap">
+        <div class="about-contact-story">
+          <div class="about-contact-copy">
+            <h2 id="about-title" class="interior-title">About &amp; Contact</h2>
+            <p>HAIR RAP BY YOYO is a hair and beauty salon in Bodakdev, Ahmedabad. YOYO opened the salon in 2022 after learning from his barber and training with Vipul Chudasama, followed by advanced training with Mounir in Dubai.</p>
+            <p>As founder and creative director, YOYO works alongside co-founders Anuj and Garima and a team of hair and beauty artists. We start each visit with a consultation about your style and routine.</p>
           </div>
+          <figure class="about-contact-photo">
+            <img src="assets/images/portfolio/HRY02646.webp" alt="YOYO with a guest after styling her hair" loading="lazy">
+          </figure>
         </div>
-      </div>
-      <div class="visit-section wrap">
-        <div class="visit-heading">
-          <h3>See you in Bodakdev.</h3>
-          <a class="interior-button" href="https://www.google.com/maps/search/?api=1&amp;query=Hair+Rap+by+Yoyo+Shilp+Satved+Ahmedabad" target="_blank" rel="noopener noreferrer">Get directions ↗</a>
+        <div class="about-contact-visit" id="contact">
+          <div class="about-contact-details">
+            <h3>Visit or get in touch</h3>
+            <dl class="about-contact-info">
+              <div class="about-contact-address">
+                <dt>Address</dt>
+                <dd><address>1st Floor, Shilp Satved, Sindhubhavan Road, opposite Mango Restaurant, above HDFC Bank, PRL Colony, Bodakdev, Ahmedabad, Gujarat 380054</address></dd>
+              </div>
+              <div>
+                <dt>Phone and email</dt>
+                <dd><a href="tel:+919099938886">+91 90999 38886</a><br><a href="mailto:hello@hairrapbyyoyo.com">hello@hairrapbyyoyo.com</a></dd>
+              </div>
+              <div>
+                <dt>Opening hours</dt>
+                <dd>Daily, 10:00 AM – 9:00 PM</dd>
+              </div>
+            </dl>
+            <div class="interior-actions">
+              <a class="interior-button interior-button--dark" href="https://wa.me/919099938886?text=Hi%2C%20I%27d%20like%20to%20book%20an%20appointment%20at%20Hair%20Rap%20by%20Yoyo." target="_blank" rel="noopener noreferrer">Book on WhatsApp <span aria-hidden="true">↗</span></a>
+              <a class="interior-button" href="https://www.google.com/maps/search/?api=1&amp;query=Hair+Rap+by+Yoyo+Shilp+Satved+Ahmedabad" target="_blank" rel="noopener noreferrer">Get directions <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+          <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.5353887417277!2d72.49969187634458!3d23.04082537916149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9b5a8327bdd3%3A0x9b6c0f6346151e9b!2sHAIR%20RAP%20BY%20YOYO!5e0!3m2!1sen!2sin!4v1794653632213!5m2!1sen!2sin" title="Map to HAIR RAP BY YOYO, Bodakdev, Ahmedabad" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
-        <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.5353887417277!2d72.49969187634458!3d23.04082537916149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9b5a8327bdd3%3A0x9b6c0f6346151e9b!2sHAIR%20RAP%20BY%20YOYO!5e0!3m2!1sen!2sin!4v1794653632213!5m2!1sen!2sin" title="Map to HAIR RAP BY YOYO, Bodakdev, Ahmedabad" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
     </section>
   </main>
   <footer class="site-footer"><div class="footer-container">
       <div class="footer-top">
         <div class="footer-brand"><a class="footer-brand-name" href="index.html">HAIR RAP BY YOYO</a><p>Thoughtful hair and beauty experiences, made personal in the heart of Ahmedabad.</p><a class="footer-cta" href="https://wa.me/919099938886?text=Hi%2C%20I%27d%20like%20to%20book%20an%20appointment%20at%20Hair%20Rap%20by%20Yoyo." target="_blank" rel="noopener noreferrer">Book an appointment ↗</a></div>
-        <div class="footer-column"><h2>Explore</h2><nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="index.html#services">Services</a><a href="index.html#products">Products</a><a href="index.html#portfolio">Portfolio</a><a href="#about">About us</a><a href="pages/cafe.html">Café</a><a href="#contact">Contact</a></nav></div>
+        <div class="footer-column"><h2>Explore</h2><nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="index.html#services">Services</a><a href="index.html#products">Products</a><a href="index.html#portfolio">Portfolio</a><a href="pages/cafe.html">Café</a><a href="#membership">Membership</a><a href="#about">About &amp; Contact</a></nav></div>
         <div class="footer-column"><h2>Get in touch</h2><div class="footer-links"><a href="tel:+919099938886">+91 90999 38886</a><a href="mailto:hello@hairrapbyyoyo.com">hello@hairrapbyyoyo.com</a><a href="https://www.instagram.com/hair_rap_by_yoyo/" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div><p>Daily, 10:00 AM – 9:00 PM</p></div>
         <div class="footer-column"><h2>Visit the salon</h2><address>1st Floor, Shilp Satved,<br>Sindhubhavan Road, opposite Mango Restaurant,<br>Bodakdev, Ahmedabad, Gujarat 380054</address><a class="footer-link" href="https://www.google.com/maps/search/?api=1&amp;query=Hair+Rap+by+Yoyo+Shilp+Satved+Ahmedabad" target="_blank" rel="noopener noreferrer">Get directions ↗</a></div>
       </div>
@@ -264,6 +345,6 @@
   <script src="js/service-menu-data.js"></script>
   <script src="js/product-data.js"></script>
   <script src="js/product-catalogue.js"></script>
-  <script src="js/homepage.js?v=2"></script>
-  <script src="js/products.js?v=2"></script>
+  <script src="js/homepage.js?v=3"></script>
+  <script src="js/products.js?v=4"></script>
 </body></html>

@@ -26,94 +26,105 @@ document.addEventListener('visibilitychange', updateSlideshow);
 updateSlideshow();
 
 const priceMenu = document.querySelector('#price-menu');
-const menuButtons = [...document.querySelectorAll('[data-menu]')];
-const money = value => value == null ? '—' : `₹${value.toLocaleString('en-IN')}`;
-const iconPaths = {
-  scissors: '<circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.2 8.2 19 19M8.2 15.8 19 5"/>',
-  colour: '<path d="M12 3c-2 3-6 6.5-6 10.5a6 6 0 0 0 12 0C18 9.5 14 6 12 3Z"/><path d="M9 14a3 3 0 0 0 3 3"/>',
-  care: '<path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"/><circle cx="12" cy="12" r="3"/>',
-  sparkle: '<path d="m12 3 1.8 5.7L19.5 10.5l-5.7 1.8L12 18l-1.8-5.7-5.7-1.8 5.7-1.8L12 3ZM19 16l.7 2.3L22 19l-2.3.7L19 22l-.7-2.3L16 19l2.3-.7L19 16Z"/>',
-  hands: '<path d="M7 12V6a1.5 1.5 0 0 1 3 0v4-6a1.5 1.5 0 0 1 3 0v6-5a1.5 1.5 0 0 1 3 0v6-3a1.5 1.5 0 0 1 3 0v6c0 4-2.5 7-6.5 7H12c-2.5 0-4-1-5.5-3L3 14a1.5 1.5 0 0 1 2.2-2l1.8 2Z"/>'
+const servicePriceHeading = priceMenu.querySelector('h3');
+const servicePriceBody = priceMenu.querySelector('tbody');
+const servicePriceNotes = priceMenu.querySelector('.service-price-notes');
+const servicePricePrompt = document.querySelector('#service-price-prompt');
+const serviceCategoryButtons = [...document.querySelectorAll('[data-service-category]')];
+const categoryGroups = {
+  colour: ['Hair colour', 'Luxury colour'],
+  hair: ['Hair cut', 'Hair styling', 'Beard', 'Extra care', 'Hair treatments', 'Hair care',
+    'Hair texture', 'Lux volumizer', 'Hair toppers', 'Hair extensions · per strand'],
+  makeup: ['Bridal packages', 'Side bride & kids', 'Pre-bride packages', 'Groom packages', 'Pre-groom packages'],
+  skin: ['Ethereal facials', 'Elegant facials', 'Clean up', 'Express facial masks', 'De-tan',
+    'Body therapy', 'Threading', 'Waxing', 'Brazilian wax', 'Hair removal'],
+  nails: ['Nail extensions & nail art', 'Manicure', 'Pedicure'],
+  massage: ['Head massage'],
 };
-function iconFor(title) {
-  const t = title.toLowerCase();
-  if (/brid|groom|facial|mask|clean|tan|wax|thread|removal/.test(t)) return 'sparkle';
-  if (/colour/.test(t)) return 'colour';
-  if (/pedicure|manicure|nail/.test(t)) return 'hands';
-  if (/cut|beard|styling/.test(t)) return 'scissors';
-  return 'care';
+const makeupAudiences = {
+  'Bridal packages': 'Bride',
+  'Pre-bride packages': 'Bride',
+  'Side bride & kids': 'Bridal party & children',
+  'Groom packages': 'Groom',
+  'Pre-groom packages': 'Groom',
+};
+const serviceGroupsByTitle = new Map();
+const money = value => value == null ? '—' : '₹' + value.toLocaleString('en-IN');
+
+for (const [menu, groups] of Object.entries(serviceMenus)) {
+  for (const group of groups) {
+    if (!serviceGroupsByTitle.has(group.title)) serviceGroupsByTitle.set(group.title, new Map());
+    const titleGroups = serviceGroupsByTitle.get(group.title);
+    const key = JSON.stringify(group);
+    if (!titleGroups.has(key)) titleGroups.set(key, { ...group, audiences: [] });
+    const audience = menu === 'makeup' ? makeupAudiences[group.title] : { women: 'Women', men: 'Men' }[menu];
+    titleGroups.get(key).audiences.push(audience);
+  }
 }
 
-function showMenu(key, featuredGroup) {
-  let featuredSummary;
-  priceMenu.replaceChildren();
-  menuButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.menu === key)));
-  serviceMenus[key].forEach((group, index) => {
-    const details = document.createElement('details');
-    details.className = 'price-group';
-    details.open = featuredGroup ? group.title === featuredGroup : index === 0;
-    const summary = document.createElement('summary');
-    if (group.title === featuredGroup) featuredSummary = summary;
-    const icon = document.createElement('span');
-    icon.className = 'price-icon';
-    icon.setAttribute('aria-hidden', 'true');
-    icon.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">${iconPaths[iconFor(group.title)]}</svg>`;
-    const label = document.createElement('span');
-    label.className = 'price-title';
-    label.textContent = group.title;
-    summary.append(icon, label);
-    details.append(summary);
-    if (group.columns.length > 2) {
-      const hint = document.createElement('p');
-      hint.className = 'price-scroll-hint';
-      hint.textContent = 'Swipe across to see all prices →';
-      details.append(hint);
-    }
-    const scroll = document.createElement('div');
-    scroll.className = 'price-table-wrap';
-    scroll.tabIndex = 0;
-    scroll.setAttribute('role', 'region');
-    scroll.setAttribute('aria-label', `${group.title} prices`);
-    const table = document.createElement('table');
-    const header = table.createTHead().insertRow();
-    ['Service', ...group.columns].forEach(label => {
-      const th = document.createElement('th');
-      th.scope = 'col';
-      th.textContent = label;
-      header.append(th);
+function makePriceRow(name, columns, prices, context) {
+  const row = document.createElement('tr');
+  const label = document.createElement('th');
+  label.scope = 'row';
+  label.textContent = name;
+
+  const detail = document.createElement('span');
+  detail.className = 'service-price-context';
+  detail.textContent = context;
+  label.append(detail);
+  row.append(label);
+
+  const cell = row.insertCell();
+  if (columns.length === 1) {
+    cell.textContent = money(prices[0]);
+  } else {
+    const tiers = document.createElement('dl');
+    tiers.className = 'service-price-tiers';
+    columns.forEach((column, index) => {
+      const tier = document.createElement('div');
+      const term = document.createElement('dt');
+      const price = document.createElement('dd');
+      term.textContent = column;
+      price.textContent = money(prices[index]);
+      tier.append(term, price);
+      tiers.append(tier);
     });
-    const body = table.createTBody();
-    group.rows.forEach(([name, ...prices]) => {
-      const row = body.insertRow();
-      const label = document.createElement('th');
-      label.scope = 'row';
-      label.textContent = name;
-      row.append(label);
-      prices.forEach(value => {
-        const cell = row.insertCell();
-        cell.textContent = money(value);
-      });
-    });
-    scroll.append(table);
-    details.append(scroll);
-    if (group.note) {
-      const note = document.createElement('p');
-      note.className = 'price-group-note';
-      note.textContent = group.note;
-      details.append(note);
-    }
-    priceMenu.append(details);
-  });
-  return featuredSummary;
+    cell.append(tiers);
+  }
+  return row;
 }
-menuButtons.forEach(button => button.addEventListener('click', () => showMenu(button.dataset.menu)));
-document.querySelector('.service-links').addEventListener('click', event => {
-  const link = event.target.closest('[data-service-group]');
-  if (!link || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-  event.preventDefault();
-  const summary = showMenu(link.dataset.serviceMenu, link.dataset.serviceGroup);
-  summary.focus({ preventScroll: true });
+
+function showServiceCategory(button) {
+  const groupTitles = categoryGroups[button.dataset.serviceCategory];
+  const rows = document.createDocumentFragment();
+  const notes = document.createDocumentFragment();
+  for (const title of groupTitles) {
+    for (const group of serviceGroupsByTitle.get(title).values()) {
+      const audience = group.audiences.length === 2 ? 'Women and men' : group.audiences[0];
+      const context = groupTitles.length > 1 ? audience + ' · ' + title : audience;
+      for (const [name, ...prices] of group.rows) {
+        rows.append(makePriceRow(name, group.columns, prices, context));
+      }
+      if (group.note) {
+        const note = document.createElement('li');
+        note.textContent = context + ' — ' + group.note;
+        notes.append(note);
+      }
+    }
+  }
+
+  serviceCategoryButtons.forEach(category => category.setAttribute('aria-pressed', String(category === button)));
+  servicePriceHeading.textContent = [...button.children]
+    .filter(child => child.getAttribute('aria-hidden') !== 'true')
+    .map(child => child.textContent).join(' ');
+  servicePriceBody.replaceChildren(rows);
+  servicePriceNotes.replaceChildren(notes);
+  servicePricePrompt.hidden = true;
+  priceMenu.hidden = false;
+  servicePriceHeading.focus({ preventScroll: true });
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  summary.scrollIntoView({ block: 'start', behavior: reducedMotion ? 'instant' : 'smooth' });
-});
-showMenu('women');
+  servicePriceHeading.scrollIntoView({ block: 'start', behavior: reducedMotion ? 'instant' : 'smooth' });
+}
+
+servicePricePrompt.hidden = false;
+serviceCategoryButtons.forEach(button => button.addEventListener('click', () => showServiceCategory(button)));
