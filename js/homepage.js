@@ -44,14 +44,16 @@ function iconFor(title) {
   return 'care';
 }
 
-function showMenu(key) {
+function showMenu(key, featuredGroup) {
+  let featuredSummary;
   priceMenu.replaceChildren();
   menuButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.menu === key)));
   serviceMenus[key].forEach((group, index) => {
     const details = document.createElement('details');
     details.className = 'price-group';
-    details.open = index === 0;
+    details.open = featuredGroup ? group.title === featuredGroup : index === 0;
     const summary = document.createElement('summary');
+    if (group.title === featuredGroup) featuredSummary = summary;
     const icon = document.createElement('span');
     icon.className = 'price-icon';
     icon.setAttribute('aria-hidden', 'true');
@@ -102,6 +104,16 @@ function showMenu(key) {
     }
     priceMenu.append(details);
   });
+  return featuredSummary;
 }
 menuButtons.forEach(button => button.addEventListener('click', () => showMenu(button.dataset.menu)));
+document.querySelector('.service-links').addEventListener('click', event => {
+  const link = event.target.closest('[data-service-group]');
+  if (!link || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  event.preventDefault();
+  const summary = showMenu(link.dataset.serviceMenu, link.dataset.serviceGroup);
+  summary.focus({ preventScroll: true });
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  summary.scrollIntoView({ block: 'start', behavior: reducedMotion ? 'instant' : 'smooth' });
+});
 showMenu('women');
