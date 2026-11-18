@@ -1,5 +1,18 @@
 const toggle = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('#navigation');
+const siteHeader = document.querySelector('.header');
+const homepageHero = document.querySelector('.hero');
+
+function updateHeaderSurface() {
+  const overContent = homepageHero.getBoundingClientRect().bottom <= siteHeader.getBoundingClientRect().bottom;
+  siteHeader.classList.toggle('is-over-content', overContent);
+}
+
+window.addEventListener('scroll', updateHeaderSurface, { passive: true });
+window.addEventListener('resize', updateHeaderSurface);
+window.addEventListener('pageshow', updateHeaderSurface);
+updateHeaderSurface();
+
 function setMenu(open) {
   navigation.classList.toggle('is-open', open);
   toggle.setAttribute('aria-expanded', String(open));

@@ -20,10 +20,15 @@ html { scroll-padding-top: 104px; }
   transform: translateX(-50%);
   border: 1px solid #ffffff9c;
   border-radius: 999px;
-  background: linear-gradient(105deg, #ffffff78, #ffffff62 47%, #ffffff83);
+  background: linear-gradient(105deg, #ffffff8c, #ffffff78 47%, #ffffff94);
   box-shadow: 0 8px 22px #1a181514, inset 0 1px 0 #ffffffce;
-  -webkit-backdrop-filter: blur(13px) saturate(106%) brightness(135%);
-  backdrop-filter: blur(13px) saturate(106%) brightness(135%);
+  -webkit-backdrop-filter: blur(17px) saturate(106%) brightness(135%);
+  backdrop-filter: blur(17px) saturate(106%) brightness(135%);
+}
+.header.is-over-content {
+  background: #fff;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
 }
 .topbar {
   min-height: 58px;
@@ -225,6 +230,7 @@ html { scroll-padding-top: 104px; }
     font-size: 14px;
   }
   .navigation.is-open { display: flex; }
+  .header.is-over-content .navigation.is-open { background: #fff; }
   .navigation a { padding: 12px 14px; }
 }
 
