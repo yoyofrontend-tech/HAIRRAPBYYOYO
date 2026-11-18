@@ -320,8 +320,8 @@ button {
 }
 
 .site-header--interior {
-  position: relative;
-  top: auto;
+  position: sticky;
+  top: 26px;
   left: auto;
   width: min(88%, 1160px);
   margin: 0 auto 54px;
@@ -643,6 +643,7 @@ button {
   }
 
   .site-header--interior {
+    top: 16px;
     width: 94%;
     margin-bottom: 34px;
   }

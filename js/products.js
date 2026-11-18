@@ -11,6 +11,8 @@ const brandNames = {
   GK: 'GK Hair',
   '18.21': '18.21 Man Made',
   OLAPLEX: 'Olaplex',
+  'SCHWARZKOPF PROFESSIONAL': 'Schwarzkopf Professional',
+  KANPEKI: 'Kanpeki',
 };
 let activeCategory = '';
 
@@ -21,13 +23,15 @@ function element(tag, className, text) {
   return node;
 }
 
-function cardFor([id, photo, displayName, size]) {
+function cardFor([id, photo, displayName, size, hasSalonBadge]) {
   const { brand, type } = inventory.get(id);
   const displayBrand = brandNames[brand] || brand;
   const card = element('article', 'catalogue-card');
   const visual = element('div', 'catalogue-visual');
   const img = document.createElement('img');
-  if (brand === 'MILK SHAKE (MS)') img.classList.add('catalogue-photo--milk-shake');
+  if (hasSalonBadge ?? (brand === 'MILK SHAKE (MS)')) {
+    img.classList.add('catalogue-photo--milk-shake');
+  }
   img.src = photo;
   img.alt = displayName + (size ? ', ' + size : '');
   img.loading = 'lazy';

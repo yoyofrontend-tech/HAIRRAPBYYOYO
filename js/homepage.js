@@ -25,6 +25,17 @@ function updateSlideshow() {
 document.addEventListener('visibilitychange', updateSlideshow);
 updateSlideshow();
 
+const cardReveal = 'IntersectionObserver' in window
+  ? new IntersectionObserver((entries, observer) => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      entry.target.classList.add('is-revealed');
+      observer.unobserve(entry.target);
+    }
+  }, { threshold: 0.12 })
+  : null;
+document.querySelectorAll('.membership-card').forEach(card => cardReveal?.observe(card));
+
 const priceMenu = document.querySelector('#price-menu');
 const servicePriceHeading = priceMenu.querySelector('h3');
 const servicePriceBody = priceMenu.querySelector('tbody');
@@ -117,10 +128,12 @@ function showServiceCategory(button) {
   servicePriceHeading.textContent = [...button.children]
     .filter(child => child.getAttribute('aria-hidden') !== 'true')
     .map(child => child.textContent).join(' ');
+  for (const row of servicePriceBody.rows) cardReveal?.unobserve(row);
   servicePriceBody.replaceChildren(rows);
   servicePriceNotes.replaceChildren(notes);
   servicePricePrompt.hidden = true;
   priceMenu.hidden = false;
+  for (const row of servicePriceBody.rows) cardReveal?.observe(row);
   servicePriceHeading.focus({ preventScroll: true });
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   servicePriceHeading.scrollIntoView({ block: 'start', behavior: reducedMotion ? 'instant' : 'smooth' });
