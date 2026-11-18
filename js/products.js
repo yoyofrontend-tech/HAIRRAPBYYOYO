@@ -10,7 +10,13 @@ const brandNames = {
   SKEYNDOR: 'Skeyndor',
   GK: 'GK Hair',
   '18.21': '18.21 Man Made',
+  'GRAHAM HILL (GH)': 'Graham Hill',
+  KEUNE: 'Keune',
+  MINTREE: 'Mintree',
+  PH: 'pH Laboratories',
   OLAPLEX: 'Olaplex',
+  BOTOLISS: 'Botoliss',
+  SHEA: 'Shea',
   'SCHWARZKOPF PROFESSIONAL': 'Schwarzkopf Professional',
   KANPEKI: 'Kanpeki',
 };
@@ -23,15 +29,12 @@ function element(tag, className, text) {
   return node;
 }
 
-function cardFor([id, photo, displayName, size, hasSalonBadge]) {
+function cardFor([id, photo, displayName, size]) {
   const { brand, type } = inventory.get(id);
   const displayBrand = brandNames[brand] || brand;
   const card = element('article', 'catalogue-card');
   const visual = element('div', 'catalogue-visual');
   const img = document.createElement('img');
-  if (hasSalonBadge ?? (brand === 'MILK SHAKE (MS)')) {
-    img.classList.add('catalogue-photo--milk-shake');
-  }
   img.src = photo;
   img.alt = displayName + (size ? ', ' + size : '');
   img.loading = 'lazy';

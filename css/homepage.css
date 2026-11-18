@@ -303,17 +303,6 @@ html { scroll-padding-top: 104px; }
 .catalogue-card{display:flex;flex-direction:column;min-width:0;border:1px solid #ece8e1;border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 8px 24px rgba(40,35,25,.04)}
 .catalogue-visual{aspect-ratio:5/4;display:grid;place-items:center;overflow:hidden}
 .catalogue-visual img{width:100%;height:100%;min-height:0;object-fit:contain;padding:12px}
-/* The milk_shake pack shots place their promotional badge in a shared corner. */
-.catalogue-visual .catalogue-photo--milk-shake {
-  --catalogue-badge-mask: radial-gradient(ellipse 10.6% 10.6% at 14.4% 17.55%, transparent 98%, #000 100%);
-  width: auto;
-  height: calc(100% - 24px);
-  max-width: calc(100% - 24px);
-  aspect-ratio: 1;
-  padding: 0;
-  -webkit-mask-image: var(--catalogue-badge-mask);
-  mask-image: var(--catalogue-badge-mask);
-}
 .catalogue-visual--empty{background:#f7f6f2;color:#625d53;font:500 12px Manrope,sans-serif}
 .catalogue-content{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1;border-top:1px solid #f1ede5}
 .catalogue-brand{color:#725d31;font:700 10px/1.4 Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;margin:0 0 8px}
@@ -734,45 +723,6 @@ html { scroll-padding-top: 104px; }
 @media (prefers-reduced-motion: reduce) {
   .service-links button, .service-links .service-preview, .service-links .service-preview > * { transition: none; }
   .service-links .service-preview > * { transform: none; }
-}
-
-.services, .products {
-  position: relative;
-  isolation: isolate;
-  --leaf-edge: min(0px, calc((100% - 100vw) / 2 + 12px));
-}
-.services::before, .services::after, .products::before, .products::after {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  pointer-events: none;
-  inline-size: min(275px, calc((100vw - 1320px) / 2 - 16px));
-  block-size: clamp(210px, 21vw, 320px);
-  background: url('../assets/images/leaf-edge-frond.svg') left top / contain no-repeat;
-}
-.services::before, .products::before { inset-inline-start: var(--leaf-edge); }
-.services::after, .products::after {
-  inset-inline-end: var(--leaf-edge);
-  background-image: url('../assets/images/leaf-edge-tropical.svg');
-  background-position: right top;
-}
-.services::before { top: clamp(280px, 29vw, 510px); }
-.services::after { top: clamp(135px, 14vw, 238px); }
-.products::before { top: 56px; }
-.products::after { top: 360px; }
-@media (max-width: 1500px) {
-  .services::before, .services::after, .products::before, .products::after {
-    top: 8px;
-    inline-size: clamp(60px, 12vw, 112px);
-    block-size: clamp(52px, 8vw, 84px);
-  }
-}
-@media (max-width: 1366px) {
-  .services::before, .services::after, .products::before, .products::after {
-    top: 1px;
-    inline-size: clamp(66px, 14vw, 132px);
-    block-size: clamp(66px, 9.4vw, 96px);
-  }
 }
 
 /* Keep the full portfolio photographs visible within aligned frames. */
