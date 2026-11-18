@@ -432,25 +432,23 @@ html { scroll-padding-top: 104px; }
   overflow: hidden;
   border: 1px solid #e3d6bc;
   border-radius: 12px;
-  background: #f4eee2;
+  background: #fcf9f3;
   font: 600 13px/1.45 Manrope, sans-serif;
 }
-.membership-balance {
+.membership-credit {
   padding: 14px 16px 15px;
-  background: #292b25;
-  color: #fff9ec;
+  background: #f5eedf;
+  color: #49351e;
 }
-.membership-balance dt {
-  color: #edd7a7;
-  font-size: 12px;
-  letter-spacing: .08em;
-  text-transform: uppercase;
+.membership-credit dt {
+  color: #665132;
+  letter-spacing: .015em;
 }
-.membership-balance dd {
-  margin: 4px 0 0;
-  font: 700 clamp(26px, 13cqi, 46px)/1.1 Manrope, sans-serif;
+.membership-credit dd {
+  margin: 5px 0 0;
+  font: 600 clamp(24px, 10.2cqi, 36px)/1.14 'Playfair Display', Georgia, serif;
   font-variant-numeric: tabular-nums;
-  letter-spacing: -.045em;
+  letter-spacing: -.025em;
 }
 .membership-fee {
   display: flex;
@@ -459,6 +457,7 @@ html { scroll-padding-top: 104px; }
   align-items: baseline;
   gap: 4px 12px;
   padding: 10px 16px;
+  border-top: 1px solid #e3d6bc;
   color: #51483a;
 }
 .membership-fee dd { margin: 0; font-weight: 700; font-variant-numeric: tabular-nums; }
