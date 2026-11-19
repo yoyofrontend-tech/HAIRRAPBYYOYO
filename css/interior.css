@@ -27,7 +27,7 @@
 .about-contact-subtitle {
   margin: 18px 0 0;
   scroll-margin-top: 24px;
-  font: 600 clamp(20px, 2.3vw, 28px)/1.2 'Playfair Display', Georgia, serif;
+  font: 500 clamp(20px, 2.3vw, 28px)/1.2 'Playfair Display', Georgia, serif;
 }
 .about-contact-copy p {
   max-width: 58ch;
