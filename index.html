@@ -13,8 +13,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/homepage.css?v=39">
-  <link rel="stylesheet" href="css/interior.css?v=4">
+  <link rel="stylesheet" href="css/homepage.css?v=41">
+  <link rel="stylesheet" href="css/interior.css?v=6">
   <link rel="stylesheet" href="css/cafe.css?v=2">
   <link rel="stylesheet" href="css/footer.css?v=2">
 </head>
@@ -30,7 +30,7 @@
         <a href="pages/products.html">Products</a>
         <a href="#membership">Membership</a>
         <a href="#portfolio">Portfolio</a>
-        <a href="#contact">Contact</a>
+        <a href="pages/contact.html">Contact</a>
       </nav>
       <div class="header-actions">
         <a class="outline book-top"
@@ -315,10 +315,10 @@
     <!-- </div>
     <div class="cafe-location">
       <p>Inside HAIR RAP BY YOYO in Bodakdev, Ahmedabad</p>
-      <a href="#contact-details">Directions and salon details <span aria-hidden="true">&darr;</span></a>
+      <a href="pages/contact.html">Directions and salon details <span aria-hidden="true">&nearr;</span></a>
     </div>
     </div>
-    </section> --> 
+    </section> -->
     <section class="membership section" id="membership" aria-labelledby="membership-title">
       <div class="wrap">
         <div class="membership-feature">
@@ -351,6 +351,56 @@
         </dl>
       </div>
     </section>
+
+    <section class="about-salon section" id="about" aria-labelledby="about-title">
+      <div class="wrap">
+        <h2 id="about-title">About the salon</h2>
+        <p class="about-salon-subtitle">Premium salon services by our stylists.</p>
+        <div class="about-salon-layout">
+          <div class="about-salon-card about-salon-story">
+            <span class="about-salon-icon" aria-hidden="true">✂︎</span>
+            <p>HAIR RAP BY YOYO is a hair and beauty salon in Bodakdev, Ahmedabad. YOYO opened the salon in 2022. As
+              founder and creative director, YOYO works alongside co-founders Anuj and Garima and a team of hair and
+              beauty artists.</p>
+            <a class="about-salon-contact" href="pages/contact.html"><span>Contact Us</span><span
+                aria-hidden="true">↗</span></a>
+          </div>
+          <figure class="about-salon-photo">
+            <img src="assets/images/hero-slides/HRY00851.webp" width="1920" height="1280"
+              alt="YOYO blow-drying a guest’s hair at the salon" loading="lazy" decoding="async">
+          </figure>
+          <div class="about-salon-card about-salon-guests">
+            <div class="about-salon-gallery">
+              <img src="assets/images/portfolio/HRY01690.webp" width="1067" height="1600"
+                alt="Soft layered hairstyle with warm brown colour" loading="lazy" decoding="async">
+              <img src="assets/images/portfolio/HRY08813.webp" width="1067" height="1600"
+                alt="A guest showing her layered hairstyle" loading="lazy" decoding="async">
+              <img src="assets/images/portfolio/HRY01902.webp" width="1067" height="1600"
+                alt="Finished men’s haircut and beard styling" loading="lazy" decoding="async">
+            </div>
+            <p>Stories and moments from guests at HAIR RAP BY YOYO.</p>
+          </div>
+        </div>
+        <dl class="about-salon-stats">
+          <div>
+            <dt>Years of experience</dt>
+            <dd>15+</dd>
+          </div>
+          <div>
+            <dt>Happy customers</dt>
+            <dd>500k+</dd>
+          </div>
+          <div>
+            <dt>Instagram followers</dt>
+            <dd>1M+</dd>
+          </div>
+          <div>
+            <dt>Average rating</dt>
+            <dd>4.8</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
     <section class="portfolio section" id="portfolio">
       <div class="wrap">
         <div class="portfolio-heading">
@@ -358,10 +408,11 @@
             <p class="service-eyebrow">THE PORTFOLIO</p>
             <h2>Made in our chair.</h2>
             <p>A look at the styles, colour and moments created at HAIR RAP BY YOYO.</p>
-          </div><a class="outline portfolio-heading-link" href="https://www.instagram.com/hair_rap_by_yoyo/"
+          </div>
+          <a class="outline portfolio-heading-link" href="https://www.instagram.com/hair_rap_by_yoyo/"
             target="_blank" rel="noopener noreferrer">See more on Instagram ↗</a>
         </div>
-        <div class="portfolio-grid">
+        <!-- <div class="portfolio-grid">
           <figure><img src="assets/images/portfolio/HRY01690.webp" alt="Soft layered hairstyle with warm brown colour"
               loading="lazy"></figure>
           <figure><img src="assets/images/portfolio/HRY04621.webp" alt="Long layered hair with a deep burgundy colour"
@@ -386,9 +437,56 @@
               loading="lazy"></figure>
           <figure><img src="assets/images/portfolio/HRY09586.webp" alt="YOYO with a guest after a grooming service"
               loading="lazy"></figure>
+        </div> -->
+        <div class="portfolio-gallery-track">
+          <button class="portfolio-gallery-panel" type="button" aria-pressed="false">
+            <img src="assets/images/portfolio/HRY01690.webp" width="1067" height="1600"
+              alt="Soft layered hairstyle with warm brown colour" loading="lazy" decoding="async">
+          </button>
+          <button class="portfolio-gallery-panel" type="button" aria-pressed="false">
+            <img src="assets/images/portfolio/HRY04621.webp" width="1067" height="1600"
+              alt="Long layered hair with a deep burgundy colour" loading="lazy" decoding="async">
+          </button>
+          <button class="portfolio-gallery-panel" type="button" aria-pressed="false">
+            <img src="assets/images/portfolio/HRY01835.webp" width="1067" height="1600"
+              alt="YOYO styling a guest’s haircut" loading="lazy" decoding="async">
+          </button>
+          <button class="portfolio-gallery-panel" type="button" aria-pressed="false">
+            <img src="assets/images/portfolio/HRY01006.webp" width="1067" height="1600"
+              alt="A young guest showing her finished hairstyle" loading="lazy" decoding="async">
+          </button>
+          <button class="portfolio-gallery-panel" type="button" aria-pressed="false">
+            <img src="assets/images/portfolio/HRY08813.webp" width="1067" height="1600"
+              alt="A guest showing her layered hairstyle" loading="lazy" decoding="async">
+          </button>
         </div>
-        <div class="portfolio-more"><a class="outline" href="https://www.instagram.com/hair_rap_by_yoyo/"
-            target="_blank" rel="noopener noreferrer">See more on Instagram ↗</a></div>
+      </div>
+    </section>
+    <!-- <section class="portfolio-gallery section" aria-labelledby="portfolio-gallery-title">
+      <div class="wrap">
+        <h2 id="portfolio-gallery-title">Gallery</h2>
+        <!-- <div class="portfolio-gallery-track">
+          <button class="portfolio-gallery-panel" type="button" aria-pressed="false">
+            <img src="assets/images/portfolio/HRY01690.webp" width="1067" height="1600"
+              alt="Soft layered hairstyle with warm brown colour" loading="lazy" decoding="async">
+          </button>
+          <button class="portfolio-gallery-panel" type="button" aria-pressed="false">
+            <img src="assets/images/portfolio/HRY04621.webp" width="1067" height="1600"
+              alt="Long layered hair with a deep burgundy colour" loading="lazy" decoding="async">
+          </button>
+          <button class="portfolio-gallery-panel" type="button" aria-pressed="false">
+            <img src="assets/images/portfolio/HRY01835.webp" width="1067" height="1600"
+              alt="YOYO styling a guest’s haircut" loading="lazy" decoding="async">
+          </button>
+          <button class="portfolio-gallery-panel" type="button" aria-pressed="false">
+            <img src="assets/images/portfolio/HRY01006.webp" width="1067" height="1600"
+              alt="A young guest showing her finished hairstyle" loading="lazy" decoding="async">
+          </button>
+          <button class="portfolio-gallery-panel" type="button" aria-pressed="false">
+            <img src="assets/images/portfolio/HRY08813.webp" width="1067" height="1600"
+              alt="A guest showing her layered hairstyle" loading="lazy" decoding="async">
+          </button>
+        </div> -->
       </div>
     </section>
     <section class="experience section" id="experience">
@@ -492,62 +590,55 @@
         </div>
       </div>
     </section>
-    
-    <section class="about-contact section" id="contact" aria-labelledby="contact-title">
+
+    <!-- <section class="about-salon section" id="about" aria-labelledby="about-title">
       <div class="wrap">
-        <div class="about-contact-story">
-          <div class="about-contact-copy">
-            <!-- <h2 id="contact-title" class="interior-title">Contact</h2> -->
-            <h3 id="about" class="membership-plans-heading">About the salon</h3>
-            <!-- <div class="about-contact-details">
-              <h3 id="about">About the salon</h3>
-            </div> -->
-            <p>HAIR RAP BY YOYO is a hair and beauty salon in Bodakdev, Ahmedabad. YOYO opened the salon in 2022.</p>
-            <p>As founder and creative director, YOYO works alongside co-founders Anuj and Garima and a team of hair and
-              beauty artists. We start each visit with a consultation about your style and routine.</p>
+        <h2 id="about-title">About the salon</h2>
+        <p class="about-salon-subtitle">Premium salon services by our stylists.</p>
+        <div class="about-salon-layout">
+          <div class="about-salon-card about-salon-story">
+            <span class="about-salon-icon" aria-hidden="true">✂︎</span>
+            <p>HAIR RAP BY YOYO is a hair and beauty salon in Bodakdev, Ahmedabad. YOYO opened the salon in 2022. As
+              founder and creative director, YOYO works alongside co-founders Anuj and Garima and a team of hair and
+              beauty artists.</p>
+            <a class="about-salon-contact" href="pages/contact.html"><span>Contact Us</span><span aria-hidden="true">↗</span></a>
           </div>
-          <figure class="about-contact-photo">
-            <img src="assets/images/portfolio/HRY09586.webp" alt="YOYO with a guest after styling her hair"
-              loading="lazy">
+          <figure class="about-salon-photo">
+            <img src="assets/images/hero-slides/HRY00851.webp" width="1920" height="1280"
+              alt="YOYO blow-drying a guest’s hair at the salon" loading="lazy" decoding="async">
           </figure>
-        </div>
-        <div class="about-contact-visit" id="contact-details">
-          <div class="about-contact-details">
-            <h3>Visit or get in touch</h3>
-            <dl class="about-contact-info">
-              <div class="about-contact-address">
-                <dt>Address</dt>
-                <dd>
-                  <address>1st Floor, Shilp Satved, Sindhubhavan Road, opposite Mango Restaurant, above HDFC Bank, PRL
-                    Colony, Bodakdev, Ahmedabad, Gujarat 380054</address>
-                </dd>
-              </div>
-              <div>
-                <dt>Phone and email</dt>
-                <dd><a href="tel:+919099938886">+91 90999 38886</a><br><a
-                    href="mailto:hello@hairrapbyyoyo.com">hello@hairrapbyyoyo.com</a></dd>
-              </div>
-              <div>
-                <dt>Opening hours</dt>
-                <dd>Daily, 10:00 AM – 9:00 PM</dd>
-              </div>
-            </dl>
-            <div class="interior-actions">
-              <a class="interior-button interior-button--dark"
-                href="https://wa.me/919099938886?text=Hi%2C%20I%27d%20like%20to%20book%20an%20appointment%20at%20Hair%20Rap%20by%20Yoyo."
-                target="_blank" rel="noopener noreferrer">Book on WhatsApp <span aria-hidden="true">↗</span></a>
-              <a class="interior-button"
-                href="https://www.google.com/maps/search/?api=1&amp;query=Hair+Rap+by+Yoyo+Shilp+Satved+Ahmedabad"
-                target="_blank" rel="noopener noreferrer">Get directions <span aria-hidden="true">↗</span></a>
+          <div class="about-salon-card about-salon-guests">
+            <div class="about-salon-gallery">
+              <img src="assets/images/portfolio/HRY01690.webp" width="1067" height="1600"
+                alt="Soft layered hairstyle with warm brown colour" loading="lazy" decoding="async">
+              <img src="assets/images/portfolio/HRY08813.webp" width="1067" height="1600"
+                alt="A guest showing her layered hairstyle" loading="lazy" decoding="async">
+              <img src="assets/images/portfolio/HRY01902.webp" width="1067" height="1600"
+                alt="Finished men’s haircut and beard styling" loading="lazy" decoding="async">
             </div>
+            <p>Stories and moments from guests at HAIR RAP BY YOYO.</p>
           </div>
-          <iframe class="map-frame"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.5353887417277!2d72.49969187634458!3d23.04082537916149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9b5a8327bdd3%3A0x9b6c0f6346151e9b!2sHAIR%20RAP%20BY%20YOYO!5e0!3m2!1sen!2sin!4v1794653632213!5m2!1sen!2sin"
-            title="Map to HAIR RAP BY YOYO, Bodakdev, Ahmedabad" loading="lazy"
-            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
+        <dl class="about-salon-stats">
+          <div>
+            <dt>Years of experience</dt>
+            <dd>15+</dd>
+          </div>
+          <div>
+            <dt>Happy customers</dt>
+            <dd>500k+</dd>
+          </div>
+          <div>
+            <dt>Instagram followers</dt>
+            <dd>1M+</dd>
+          </div>
+          <div>
+            <dt>Average rating</dt>
+            <dd>4.8</dd>
+          </div>
+        </dl>
       </div>
-    </section>
+    </section> -->
 
     <!-- cafe -->
     <!-- <section class="cafe-section section" id="cafe" aria-labelledby="cafe-title">
@@ -580,7 +671,7 @@
         </div>
         <div class="cafe-menu-section">
           <!-- <h3 class="cafe-menu-title">From the café</h3> -->
-          <!-- <div class="cafe-menu-grid">
+    <!-- <div class="cafe-menu-grid">
             <figure>
               <img src="assets/images/paris-beans/coffee.webp" width="736" height="736"
                 alt="A cup of coffee with latte art" loading="lazy" decoding="async">
@@ -597,10 +688,10 @@
               <figcaption>Hummus</figcaption>
             </figure>
           </div> -->
-        <!-- </div>
+    <!-- </div>
         <div class="cafe-location">
           <p>Inside HAIR RAP BY YOYO in Bodakdev, Ahmedabad</p>
-          <a href="#contact-details">Directions and salon details <span aria-hidden="true">&darr;</span></a>
+          <a href="pages/contact.html">Directions and salon details <span aria-hidden="true">&nearr;</span></a>
         </div>
       </div>
     </section> -->
@@ -617,7 +708,7 @@
           <h2>Explore</h2>
           <nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="pages/services.html">Services</a><a
               href="pages/products.html">Products</a><a href="index.html#portfolio">Portfolio</a><a
-              href="#cafe">Café</a><a href="#membership">Membership</a><a href="#contact">Contact</a></nav>
+              href="#cafe">Café</a><a href="#membership">Membership</a><a href="pages/contact.html">Contact</a></nav>
         </div>
         <div class="footer-column">
           <h2>Get in touch</h2>
@@ -659,7 +750,7 @@
   </dialog>
   <script src="js/product-data.js"></script>
   <script src="js/product-catalogue.js?v=4"></script>
-  <script src="js/homepage.js?v=15"></script>
+  <script src="js/homepage.js?v=18"></script>
   <script src="js/products.js?v=8"></script>
 </body>
 

@@ -30,7 +30,13 @@ const siteSearchEmpty = siteSearch.querySelector('.site-search-empty');
 const navigationLinks = [...navigation.querySelectorAll('a')];
 const homeLink = navigationLinks.find(link => link.getAttribute('aria-current') === 'page');
 
-function updateCurrentNavigation() {
+function updateHomepageLocation() {
+  if (location.hash === '#contact' || location.hash === '#contact-details') {
+    // Use a fresh URL for browsers that cached the old Contact page's redirect to Home.
+    location.replace(new URL('pages/contact.html?from=legacy-link', location.href));
+    return;
+  }
+
   const target = document.getElementById(location.hash.slice(1));
   const sectionLink = target && navigationLinks.find(link =>
     link.hash && document.getElementById(link.hash.slice(1))?.contains(target));
@@ -42,8 +48,8 @@ function updateCurrentNavigation() {
   }
 }
 
-window.addEventListener('hashchange', updateCurrentNavigation);
-updateCurrentNavigation();
+window.addEventListener('hashchange', updateHomepageLocation);
+updateHomepageLocation();
 
 const sectionLinks = navigationLinks.map(link => {
   const result = link.cloneNode(true);
@@ -73,6 +79,16 @@ siteSearchToggle.addEventListener('click', () => {
 siteSearchQuery.addEventListener('input', filterSections);
 siteSearchResults.addEventListener('click', event => {
   if (event.target.closest('a')) siteSearch.close();
+});
+
+const portfolioGallery = document.querySelector('.portfolio-gallery-track');
+portfolioGallery.addEventListener('click', event => {
+  const selectedPanel = event.target.closest('.portfolio-gallery-panel');
+  if (!selectedPanel) return;
+
+  const wasPressed = selectedPanel.getAttribute('aria-pressed') === 'true';
+  portfolioGallery.querySelector('[aria-pressed="true"]')?.setAttribute('aria-pressed', 'false');
+  selectedPanel.setAttribute('aria-pressed', String(!wasPressed));
 });
 
 const heroSlides = [...document.querySelectorAll('.hero-slide')];

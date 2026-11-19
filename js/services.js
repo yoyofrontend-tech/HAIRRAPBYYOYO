@@ -12,7 +12,6 @@ const priceMenu = document.querySelector('#price-menu');
 const servicePriceHeading = document.querySelector('#service-prices');
 const servicePriceBody = priceMenu.querySelector('tbody');
 const servicePriceNotes = priceMenu.querySelector('.service-price-notes');
-const servicePricePrompt = document.querySelector('#service-price-prompt');
 const serviceCategoryLinks = [...document.querySelectorAll('[data-service-category]')];
 const categoryGroups = {
   colour: ['Hair colour', 'Luxury colour'],
@@ -105,6 +104,6 @@ function showServiceCategory(link) {
 }
 
 const categoryKey = new URLSearchParams(location.search).get('category');
-const activeCategory = serviceCategoryLinks.find(link => link.dataset.serviceCategory === categoryKey);
-if (activeCategory) showServiceCategory(activeCategory);
-else servicePricePrompt.hidden = false;
+const activeCategory = serviceCategoryLinks.find(link => link.dataset.serviceCategory === categoryKey)
+  ?? serviceCategoryLinks[0];
+showServiceCategory(activeCategory);
