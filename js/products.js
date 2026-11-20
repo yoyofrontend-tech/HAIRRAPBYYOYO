@@ -55,6 +55,7 @@ function setupCatalogue(results) {
   const filters = document.querySelector('#catalogue-filters');
   const search = document.querySelector('#product-search');
   const brandFilter = document.querySelector('#product-brand');
+  const catalogueStatus = document.querySelector('#catalogue-status');
   const initialFilters = new URLSearchParams(location.search);
   let activeCategory = '';
 
@@ -96,6 +97,24 @@ function setupCatalogue(results) {
     return section;
   }
 
+  function renderEmptyState() {
+    const empty = element('section', 'catalogue-empty');
+    const icon = element('span', 'catalogue-empty-icon');
+    icon.setAttribute('aria-hidden', 'true');
+    const heading = element('h2', '', 'No products found');
+    const message = element('p', '', 'Try a different search or clear your filters to browse the collection.');
+    const reset = element('button', 'catalogue-filter catalogue-empty-reset', 'Clear filters');
+    reset.type = 'button';
+    reset.addEventListener('click', () => {
+      search.value = '';
+      brandFilter.value = '';
+      selectCategory('');
+      filters.querySelector('button[data-category=""]').focus();
+    });
+    empty.append(icon, heading, message, reset);
+    return empty;
+  }
+
   function renderProducts() {
     const terms = search.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
     const selectedBrand = brandFilter.value;
@@ -117,12 +136,11 @@ function setupCatalogue(results) {
       if (matches.length) sections.push(renderGroup(group, matches, showPreview));
     }
 
-    if (!sections.length) {
-      const empty = element('p', 'catalogue-empty', 'No products match these filters. Try a different search, brand, or category.');
-      empty.setAttribute('role', 'status');
-      sections.push(empty);
+    const status = sections.length ? '' : 'No products found.';
+    if (catalogueStatus.textContent !== status) {
+      catalogueStatus.textContent = status;
     }
-    results.replaceChildren(...sections);
+    results.replaceChildren(...(sections.length ? sections : [renderEmptyState()]));
   }
 
   function updateResults() {

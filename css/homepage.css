@@ -352,7 +352,64 @@ html { scroll-padding-top: 104px; }
 .catalogue-meta{color:#625d53;font:12px/1.5 Manrope,sans-serif;margin:8px 0 0}
 .catalogue-enquire{margin-top:auto;padding-top:16px;font:600 12px/1.4 Inter,sans-serif;color:#6f5a2b}
 .catalogue-enquire:hover{text-decoration:underline}
-.catalogue-empty{padding:16px 0;color:#625d53}
+.catalogue-empty {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  padding: clamp(24px, 4vw, 46px) 18px;
+  border: 1px solid #e9dfcc;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #fcfaf6, #f5efe4);
+  text-align: center;
+}
+.catalogue-empty-icon {
+  position: relative;
+  display: block;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #eee4d3;
+  color: #806636;
+}
+.catalogue-empty-icon::before, .catalogue-empty-icon::after {
+  position: absolute;
+  content: '';
+}
+.catalogue-empty-icon::before {
+  top: 12px;
+  left: 12px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+}
+.catalogue-empty-icon::after {
+  top: 30px;
+  left: 28px;
+  width: 9px;
+  height: 2px;
+  border-radius: 1px;
+  background: currentColor;
+  transform: rotate(45deg);
+}
+.catalogue-empty h2 {
+  margin: 0;
+  color: #292721;
+  font: 600 clamp(23px, 3vw, 32px)/1.2 'Playfair Display', Georgia, serif;
+}
+.catalogue-empty p {
+  max-width: 42ch;
+  margin: 0;
+  color: #625d53;
+  font: 14px/1.55 Manrope, sans-serif;
+}
+.catalogue-empty .catalogue-empty-reset {
+  margin-top: 5px;
+  border-color: #292b26;
+  background: #292b26;
+  color: #fff;
+}
+.catalogue-empty .catalogue-empty-reset:hover { background: #454638; }
 @media(max-width:1060px){.featured-product-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:900px){.catalogue-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}}
 @media(max-width:700px){.catalogue-content{padding:12px 13px}.catalogue-name{font-size:13px}.catalogue-section-header{column-gap:10px}.catalogue-filter,.catalogue-view-all{padding-inline:12px}}
@@ -991,7 +1048,7 @@ html { scroll-padding-top: 104px; }
   font: italic 600 clamp(15px, 1.4vw, 21px)/1.3 'Playfair Display', Georgia, serif;
   text-wrap: balance;
 }
-#reviews .reel-card figcaption {
+:is(#reviews, #celeb-reels) .reel-card figcaption {
   display: block;
   min-height: 0;
   padding-block: 9px;
