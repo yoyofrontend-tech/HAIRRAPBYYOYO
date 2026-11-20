@@ -12,6 +12,22 @@
   <link rel="stylesheet" href="../css/homepage.css?v=46">
   <link rel="stylesheet" href="../css/interior.css?v=8">
   <link rel="stylesheet" href="../css/footer.css?v=2">
+  <style>
+    .contact-page-shell {
+      display: grid;
+      grid-template-rows: 1fr auto;
+      min-height: 100vh;
+      min-height: 100dvh;
+    }
+
+    .contact-page-shell > .contact-page {
+      display: grid;
+      margin-block: 0;
+    }
+
+    .contact-page .about-contact-details { align-self: center; }
+    .contact-page .about-contact-methods { display: grid; gap: 4px; justify-items: start; }
+  </style>
 </head>
 <body class="contact-page-shell">
   <header class="header is-over-content">
