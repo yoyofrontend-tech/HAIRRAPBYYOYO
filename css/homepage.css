@@ -5,6 +5,8 @@
 /* Frosted navigation and a lower hero panel */
 :root { --hero-frame: min(1280px, 78%); }
 html { scroll-padding-top: 104px; }
+.homepage-content > .section { padding-block-end: clamp(80px, 7vw, 100px); }
+.homepage-content .membership-inclusions { margin-block-end: 0; }
 .hero-inner {
   border: 1px solid #fffdf0bc;
   background: linear-gradient(115deg, #fff8eb94 0%, #fff8eb76 57%, #faf1e745 100%);
