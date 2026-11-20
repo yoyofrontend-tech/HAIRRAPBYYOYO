@@ -15,6 +15,11 @@ const navigationLinks = [...document.querySelectorAll('#navigation a')];
 const homeLink = navigationLinks.find(link => link.getAttribute('aria-current') === 'page');
 
 function updateHomepageLocation() {
+  if (location.hash === '#portfolio' || location.hash === '#portfolio-gallery-title') {
+    location.replace(new URL('pages/portfolio.html', location.href));
+    return;
+  }
+
   if (location.hash === '#contact' || location.hash === '#contact-details') {
     // Use a fresh URL for browsers that cached the old Contact page's redirect to Home.
     location.replace(new URL('pages/contact.html?from=legacy-link', location.href));
@@ -44,16 +49,6 @@ window.addEventListener('pageshow', event => {
     const section = document.getElementById(initialHomepageHash.slice(1));
     section?.scrollIntoView({ block: 'start', behavior: 'instant' });
   });
-});
-
-const portfolioGallery = document.querySelector('.portfolio-gallery-track');
-portfolioGallery.addEventListener('click', event => {
-  const selectedPanel = event.target.closest('.portfolio-gallery-panel');
-  if (!selectedPanel) return;
-
-  const wasPressed = selectedPanel.getAttribute('aria-pressed') === 'true';
-  portfolioGallery.querySelector('[aria-pressed="true"]')?.setAttribute('aria-pressed', 'false');
-  selectedPanel.setAttribute('aria-pressed', String(!wasPressed));
 });
 
 const featuredServiceRows = [...document.querySelectorAll('.service-showcase .service-links li')];

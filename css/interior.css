@@ -8,7 +8,7 @@
 .interior-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
 .interior-button{display:inline-flex;align-items:center;justify-content:center;gap:16px;min-height:50px;padding:12px 22px;border:1px solid #aaa08e;border-radius:999px;background:transparent;color:#34332e;font:600 13px Inter,sans-serif;transition:transform .25s,background .25s}
 .interior-button:hover{transform:translateY(-2px);background:#f4eee4}
-.interior-button--dark{background:#292b26;border-color:#292b26;color:#fff}.interior-button--dark:hover{background:#4a493e}
+.interior-button--dark{background:#2b2b26;border-color:#292b26;color:#fff}.interior-button--dark:hover{background:#4a493e}
 .interior-button--light{background:#fff;border-color:#fff;color:#292b26}.interior-button--light:hover{background:#f4eee4}
 @media(prefers-reduced-motion:reduce){.interior-button{transition:none}.interior-button:hover{transform:none}}
 
@@ -64,7 +64,7 @@
   margin-top: auto;
   margin-bottom: 12px;
   border-radius: 999px;
-  font-weight: 700;
+  font-weight: 900;
 }
 .about-salon-contact span {
   display: inline-grid;

@@ -323,7 +323,7 @@ html { scroll-padding-top: 104px; }
 .product-showcase .product-heading{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px}
 .catalogue-browse{display:inline-flex;align-items:center;gap:14px;min-height:44px;padding:10px 18px;border:1px solid #26231d;border-radius:99px;background:#26231d;color:#fff;font:600 13px Inter,sans-serif}
 .catalogue-browse:hover{background:#443b2d}
-.catalogue-page,.service-page,.membership-page{padding-block:clamp(106px,10vw,144px) clamp(36px,5vw,68px)}
+.catalogue-page,.service-page,.membership-page,.portfolio-page{padding-block:clamp(106px,10vw,144px) clamp(36px,5vw,68px)}
 .service-page{max-width:980px}
 .service-page .service-intro h1{font-size:clamp(32px,4vw,56px)}
 .catalogue-controls{display:grid;gap:16px;margin-top:24px}
@@ -595,7 +595,7 @@ html { scroll-padding-top: 104px; }
 @media(prefers-reduced-motion:reduce){.experience-grid article,.catalogue-card,.review-grid article,.experience-grid article img,.catalogue-visual img{transition:none}.experience-grid article:hover,.catalogue-card:hover,.review-grid article:hover,.experience-grid article:active,.catalogue-card:active,.review-grid article:active,.experience-grid article:hover img,.catalogue-card:hover .catalogue-visual img{transform:none}}
 
 .portfolio{background:#f6f3ed}
-.portfolio-heading h2{margin:0 0 12px}
+.portfolio-heading h1{margin:0 0 12px;font:600 clamp(34px,4vw,56px)/1.1 'Playfair Display',Georgia,serif;letter-spacing:-.025em}
 .portfolio-heading>p:last-child{color:#656b76;line-height:1.6;margin:0;max-width:620px}
 .portfolio-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:300px;gap:16px;margin-top:36px}
 .portfolio-grid figure{margin:0;overflow:hidden;border-radius:16px;background:#e5ded2}
@@ -604,63 +604,6 @@ html { scroll-padding-top: 104px; }
 @media(hover:hover) and (pointer:fine){.portfolio-grid figure:hover img{transform:scale(1.035)}}
 @media(max-width:700px){.portfolio-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:210px;gap:10px;margin-top:26px}.portfolio-grid figure{border-radius:12px}}
 @media(prefers-reduced-motion:reduce){.portfolio-grid img{transition:none}.portfolio-grid figure:hover img{transform:none}}
-
-.portfolio-gallery h2 {
-  margin: 0 0 clamp(14px, 2vw, 24px);
-  font: 600 clamp(28px, 4vw, 42px)/1.15 'Playfair Display', Georgia, serif;
-}
-.portfolio-gallery-track {
-  display: flex;
-  height: clamp(280px, 70vh, 540px);
-  overflow: hidden;
-  border-radius: 16px;
-  background: #eae4db;
-}
-.portfolio-gallery-panel {
-  position: relative;
-  flex: 1 1 0;
-  min-width: 0;
-  min-height: 44px;
-  border: 0;
-  padding: 0;
-  background: transparent;
-  cursor: pointer;
-  transition: flex-grow .8s ease;
-}
-.portfolio-gallery-panel img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 37%;
-}
-.portfolio-gallery-panel:is([aria-pressed="true"], :focus-visible) { flex-grow: 7; }
-.portfolio-gallery-track:has(.portfolio-gallery-panel:focus-visible) .portfolio-gallery-panel:not(:focus-visible) {
-  flex-grow: 1;
-}
-.portfolio-gallery-panel:focus-visible::after {
-  position: absolute;
-  inset: 3px;
-  border: 2px solid #fff;
-  box-shadow: 0 0 0 1px #262626;
-  content: '';
-  pointer-events: none;
-}
-@media (hover: hover) and (pointer: fine) {
-  .portfolio-gallery-track:not(:has(:focus-visible)) .portfolio-gallery-panel:hover { flex-grow: 7; }
-  .portfolio-gallery-track:not(:has(:focus-visible)):has(.portfolio-gallery-panel:hover)
-    .portfolio-gallery-panel:not(:hover) { flex-grow: 1; }
-}
-@media (max-width: 560px) {
-  .portfolio-gallery-track {
-    flex-direction: column;
-    height: clamp(360px, 65vh, 500px);
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .portfolio-gallery-panel { transition: none; }
-}
 
 /* Service menu */
 .services{position:relative;padding-block:clamp(100px,5vw,250px)}
@@ -698,6 +641,7 @@ html { scroll-padding-top: 104px; }
   font-size: 20px;
   cursor: pointer;
 }
+.service-category-arrow:not([hidden]) { display: grid; place-items: center; }
 .service-category-arrow:hover { background: #f6f1e8; }
 .service-category-arrow[aria-disabled="true"] { opacity: .4; cursor: default; }
 .service-showcase {

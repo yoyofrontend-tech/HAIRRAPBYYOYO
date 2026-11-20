@@ -62,7 +62,7 @@
     ['Products', 'pages/products.html', 'shop catalogue'],
     ['Membership', 'pages/membership.html', 'compare membership plans service credit fee'],
     ['Salon Membership Overview', 'index.html#membership', 'annual benefits'],
-    ['Portfolio', 'index.html#portfolio', 'gallery photos hairstyles made in our chair'],
+    ['Portfolio', 'pages/portfolio.html', 'gallery photos hairstyles made in our chair'],
     ['Contact', 'pages/contact.html', 'book appointment whatsapp phone email hours location map directions address bodakdev ahmedabad'],
     ['About the Salon', 'index.html#about', 'history team yoyo anuj garima'],
     ['Celebs at YOYO', 'index.html#celeb-reels', 'celebrity reels videos'],
