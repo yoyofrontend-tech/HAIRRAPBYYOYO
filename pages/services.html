@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700&amp;family=Playfair+Display:wght@500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/homepage.css?v=38">
+  <link rel="stylesheet" href="../css/homepage.css?v=47">
   <link rel="stylesheet" href="../css/interior.css?v=6">
   <link rel="stylesheet" href="../css/footer.css?v=2">
 </head>
@@ -27,9 +27,6 @@
       </nav>
       <div class="header-actions">
         <a class="outline book-top" href="https://wa.me/919099938886?text=Hi%2C%20I%27d%20like%20to%20book%20an%20appointment%20at%20Hair%20Rap%20by%20Yoyo." target="_blank" rel="noopener noreferrer">Book Now</a>
-        <a class="site-search-toggle" href="#service-categories" aria-label="Find service prices">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.3"/><path d="m15.4 15.4 4.2 4.2"/></svg>
-        </a>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation" aria-label="Open menu"><span></span><span></span><span></span></button>
       </div>
     </div>
@@ -40,21 +37,27 @@
       <h1>Good hair starts with a good plan.</h1>
       <p>Choose a direction. We will shape the details around your hair, your style, and your everyday routine.</p>
     </div>
-    <div class="interior-actions">
-      <a class="interior-button interior-button--dark" href="https://wa.me/919099938886?text=Hi%2C%20I%27d%20like%20to%20book%20an%20appointment%20at%20Hair%20Rap%20by%20Yoyo." target="_blank" rel="noopener noreferrer">
-        Book an appointment <span aria-hidden="true">&nearr;</span>
-      </a>
+    <div class="service-category-picker">
+      <button class="service-category-arrow" type="button" aria-label="Previous service filters"
+        aria-controls="service-categories" hidden><span aria-hidden="true">&larr;</span></button>
+      <nav class="catalogue-filters service-category-links" id="service-categories" aria-label="Service categories">
+        <a class="catalogue-filter" href="?category=colour" data-service-category="colour">Hair Color &amp; Balayage</a>
+        <a class="catalogue-filter" href="?category=hair" data-service-category="hair">Haircut &amp; Styling</a>
+        <a class="catalogue-filter" href="?category=makeup" data-service-category="makeup">Bridal Makeup</a>
+        <a class="catalogue-filter" href="?category=skin" data-service-category="skin">Skin &amp; Facial Treatments</a>
+        <a class="catalogue-filter" href="?category=nails" data-service-category="nails">Nail Art &amp; Extensions</a>
+        <a class="catalogue-filter" href="?category=massage" data-service-category="massage">Luxury Head Massage</a>
+      </nav>
+      <button class="service-category-arrow" type="button" aria-label="Next service filters"
+        aria-controls="service-categories" hidden><span aria-hidden="true">&rarr;</span></button>
     </div>
-    <nav class="catalogue-filters service-category-links" id="service-categories" aria-label="Service categories">
-      <a class="catalogue-filter" href="?category=colour" data-service-category="colour">Hair Color &amp; Balayage</a>
-      <a class="catalogue-filter" href="?category=hair" data-service-category="hair">Haircut &amp; Styling</a>
-      <a class="catalogue-filter" href="?category=makeup" data-service-category="makeup">Bridal Makeup</a>
-      <a class="catalogue-filter" href="?category=skin" data-service-category="skin">Skin &amp; Facial Treatments</a>
-      <a class="catalogue-filter" href="?category=nails" data-service-category="nails">Nail Art &amp; Extensions</a>
-      <a class="catalogue-filter" href="?category=massage" data-service-category="massage">Luxury Head Massage</a>
-    </nav>
     <section class="price-menu" id="price-menu" aria-labelledby="service-prices" hidden>
-      <h2 class="service-prices-heading" id="service-prices"></h2>
+      <div class="service-prices-header">
+        <h2 class="service-prices-heading" id="service-prices"></h2>
+        <a class="interior-button interior-button--dark service-booking-link"
+          href="https://wa.me/919099938886?text=Hi%2C%20I%27d%20like%20to%20book%20an%20appointment%20at%20Hair%20Rap%20by%20Yoyo."
+          target="_blank" rel="noopener noreferrer">Book an appointment <span aria-hidden="true">&nearr;</span></a>
+      </div>
       <div class="service-price-list">
         <table class="service-price-table" aria-labelledby="service-prices">
           <thead><tr><th scope="col">Service</th><th scope="col">Prices</th></tr></thead>
@@ -81,7 +84,8 @@
       <div class="footer-bottom"><span>© HAIR RAP BY YOYO. All rights reserved.</span><span>Made for your moment. ✦</span></div>
     </div></footer>
   <script src="../js/interior.js"></script>
-  <script src="../js/service-menu-data.js"></script>
-  <script src="../js/services.js?v=2"></script>
+  <script src="../js/service-menu-data.js?v=2"></script>
+  <script src="../js/services.js?v=4"></script>
+  <script src="../js/site-search.js?v=2"></script>
 </body>
 </html>

@@ -1,5 +1,3 @@
-const toggle = document.querySelector('.menu-toggle');
-const navigation = document.querySelector('#navigation');
 const siteHeader = document.querySelector('.header');
 const homepageHero = document.querySelector('.hero');
 
@@ -13,21 +11,7 @@ window.addEventListener('resize', updateHeaderSurface);
 window.addEventListener('pageshow', updateHeaderSurface);
 updateHeaderSurface();
 
-function setMenu(open) {
-  navigation.classList.toggle('is-open', open);
-  toggle.setAttribute('aria-expanded', String(open));
-  toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-}
-toggle.addEventListener('click', () => setMenu(toggle.getAttribute('aria-expanded') !== 'true'));
-navigation.addEventListener('click', event => { if (event.target.closest('a')) setMenu(false); });
-document.addEventListener('keydown', event => { if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') { setMenu(false); toggle.focus(); } });
-
-const siteSearchToggle = document.querySelector('.site-search-toggle');
-const siteSearch = document.querySelector('#site-search');
-const siteSearchQuery = siteSearch.querySelector('input');
-const siteSearchResults = siteSearch.querySelector('.site-search-results');
-const siteSearchEmpty = siteSearch.querySelector('.site-search-empty');
-const navigationLinks = [...navigation.querySelectorAll('a')];
+const navigationLinks = [...document.querySelectorAll('#navigation a')];
 const homeLink = navigationLinks.find(link => link.getAttribute('aria-current') === 'page');
 
 function updateHomepageLocation() {
@@ -51,34 +35,15 @@ function updateHomepageLocation() {
 window.addEventListener('hashchange', updateHomepageLocation);
 updateHomepageLocation();
 
-const sectionLinks = navigationLinks.map(link => {
-  const result = link.cloneNode(true);
-  result.removeAttribute('aria-current');
-  siteSearchResults.append(result);
-  return result;
-});
+const initialHomepageHash = location.hash;
+window.addEventListener('pageshow', event => {
+  if (event.persisted || !initialHomepageHash) return;
 
-function searchText(text) {
-  return text.toLowerCase().normalize('NFD').replace(/\p{M}/gu, '').trim();
-}
-
-function filterSections() {
-  const query = searchText(siteSearchQuery.value);
-  for (const link of sectionLinks) {
-    link.hidden = !searchText(link.textContent).includes(query);
-  }
-  siteSearchEmpty.hidden = sectionLinks.some(link => !link.hidden);
-}
-
-siteSearchToggle.addEventListener('click', () => {
-  setMenu(false);
-  siteSearchQuery.value = '';
-  filterSections();
-  siteSearch.showModal();
-});
-siteSearchQuery.addEventListener('input', filterSections);
-siteSearchResults.addEventListener('click', event => {
-  if (event.target.closest('a')) siteSearch.close();
+  requestAnimationFrame(() => {
+    if (location.hash !== initialHomepageHash) return;
+    const section = document.getElementById(initialHomepageHash.slice(1));
+    section?.scrollIntoView({ block: 'start', behavior: 'instant' });
+  });
 });
 
 const portfolioGallery = document.querySelector('.portfolio-gallery-track');
@@ -90,6 +55,56 @@ portfolioGallery.addEventListener('click', event => {
   portfolioGallery.querySelector('[aria-pressed="true"]')?.setAttribute('aria-pressed', 'false');
   selectedPanel.setAttribute('aria-pressed', String(!wasPressed));
 });
+
+const featuredServiceRows = [...document.querySelectorAll('.service-showcase .service-links li')];
+const featuredServiceImages = document.querySelector('.service-visual-strip');
+const touchServicePreviews = window.matchMedia('(hover: none), (any-pointer: coarse), (max-width: 1024px)');
+const reducedServiceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const servicePreviewDelay = 5000;
+let featuredServiceIndex = 0;
+let servicePreviewTimer;
+let servicePreviewInView = !('IntersectionObserver' in window);
+
+function previewFeaturedService(index) {
+  if (index !== featuredServiceIndex) {
+    featuredServiceRows[featuredServiceIndex].classList.remove('is-active');
+    featuredServiceRows[index].classList.add('is-active');
+    featuredServiceImages.style.setProperty('--service-image-index', index);
+    featuredServiceIndex = index;
+  }
+  scheduleServicePreview();
+}
+
+function scheduleServicePreview() {
+  clearTimeout(servicePreviewTimer);
+  if (!touchServicePreviews.matches || reducedServiceMotion.matches || !servicePreviewInView || document.hidden) return;
+
+  servicePreviewTimer = setTimeout(() => {
+    previewFeaturedService((featuredServiceIndex + 1) % featuredServiceRows.length);
+  }, servicePreviewDelay);
+}
+
+featuredServiceRows.forEach((row, index) => {
+  const link = row.querySelector('a');
+  row.addEventListener('pointerenter', event => {
+    if (event.pointerType === 'mouse') previewFeaturedService(index);
+  });
+  link.addEventListener('focus', () => {
+    if (link.matches(':focus-visible')) previewFeaturedService(index);
+  });
+});
+
+if ('IntersectionObserver' in window) {
+  const servicePreviewObserver = new IntersectionObserver(([entry]) => {
+    servicePreviewInView = entry.intersectionRatio >= 0.25;
+    scheduleServicePreview();
+  }, { threshold: 0.25 });
+  servicePreviewObserver.observe(featuredServiceImages.parentElement);
+}
+touchServicePreviews.addEventListener('change', scheduleServicePreview);
+reducedServiceMotion.addEventListener('change', scheduleServicePreview);
+document.addEventListener('visibilitychange', scheduleServicePreview);
+scheduleServicePreview();
 
 const heroSlides = [...document.querySelectorAll('.hero-slide')];
 let activeSlide = 0;

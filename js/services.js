@@ -13,16 +13,6 @@ const servicePriceHeading = document.querySelector('#service-prices');
 const servicePriceBody = priceMenu.querySelector('tbody');
 const servicePriceNotes = priceMenu.querySelector('.service-price-notes');
 const serviceCategoryLinks = [...document.querySelectorAll('[data-service-category]')];
-const categoryGroups = {
-  colour: ['Hair colour', 'Luxury colour'],
-  hair: ['Hair cut', 'Hair styling', 'Beard', 'Extra care', 'Hair treatments', 'Hair care',
-    'Hair texture', 'Lux volumizer', 'Hair toppers', 'Hair extensions · per strand'],
-  makeup: ['Bridal packages', 'Side bride & kids', 'Pre-bride packages', 'Groom packages', 'Pre-groom packages'],
-  skin: ['Ethereal facials', 'Elegant facials', 'Clean up', 'Express facial masks', 'De-tan',
-    'Body therapy', 'Threading', 'Waxing', 'Brazilian wax', 'Hair removal'],
-  nails: ['Nail extensions & nail art', 'Manicure', 'Pedicure'],
-  massage: ['Head massage'],
-};
 const makeupAudiences = {
   'Bridal packages': 'Bride',
   'Pre-bride packages': 'Bride',
@@ -46,6 +36,7 @@ for (const [menu, groups] of Object.entries(serviceMenus)) {
 
 function makePriceRow(name, columns, prices, context) {
   const row = document.createElement('tr');
+  row.dataset.serviceName = name;
   const label = document.createElement('th');
   label.scope = 'row';
   label.textContent = name;
@@ -103,7 +94,63 @@ function showServiceCategory(link) {
   for (const row of servicePriceBody.rows) priceRowReveal?.observe(row);
 }
 
-const categoryKey = new URLSearchParams(location.search).get('category');
+const serviceParameters = new URLSearchParams(location.search);
+const categoryKey = serviceParameters.get('category');
 const activeCategory = serviceCategoryLinks.find(link => link.dataset.serviceCategory === categoryKey)
   ?? serviceCategoryLinks[0];
 showServiceCategory(activeCategory);
+
+const categoryTrack = document.querySelector('#service-categories');
+const categoryPicker = categoryTrack.parentElement;
+const [previousCategories, nextCategories] = categoryPicker.querySelectorAll('button');
+const reducedCategoryMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+function syncCategoryArrows() {
+  const atStart = categoryTrack.scrollLeft <= 1;
+  const atEnd = categoryTrack.scrollLeft + categoryTrack.clientWidth >= categoryTrack.scrollWidth - 1;
+  previousCategories.setAttribute('aria-disabled', String(atStart));
+  nextCategories.setAttribute('aria-disabled', String(atEnd));
+}
+
+function fitCategoryFilters() {
+  const fits = categoryTrack.scrollWidth <= categoryPicker.clientWidth + 1;
+  previousCategories.hidden = nextCategories.hidden = fits;
+  const start = activeCategory.offsetLeft;
+  const end = start + activeCategory.offsetWidth;
+  if (start < categoryTrack.scrollLeft) categoryTrack.scrollLeft = start;
+  else if (end > categoryTrack.scrollLeft + categoryTrack.clientWidth) {
+    categoryTrack.scrollLeft = end - categoryTrack.clientWidth;
+  }
+  syncCategoryArrows();
+}
+
+function moveCategoryFilters(forward) {
+  const left = categoryTrack.scrollLeft;
+  const right = left + categoryTrack.clientWidth;
+  const next = forward
+    ? serviceCategoryLinks.find(link => link.offsetLeft + link.offsetWidth > right + 1)
+    : serviceCategoryLinks.findLast(link => link.offsetLeft < left - 1);
+  if (!next) return;
+
+  categoryTrack.scrollTo({
+    left: forward ? next.offsetLeft : next.offsetLeft + next.offsetWidth - categoryTrack.clientWidth,
+    behavior: reducedCategoryMotion.matches ? 'instant' : 'smooth',
+  });
+}
+
+previousCategories.addEventListener('click', () => moveCategoryFilters(false));
+nextCategories.addEventListener('click', () => moveCategoryFilters(true));
+categoryTrack.addEventListener('scroll', syncCategoryArrows, { passive: true });
+window.addEventListener('resize', fitCategoryFilters);
+document.fonts.ready.then(fitCategoryFilters);
+fitCategoryFilters();
+
+const requestedService = serviceParameters.get('service');
+const matchingRow = requestedService && [...servicePriceBody.rows]
+  .find(row => row.dataset.serviceName === requestedService);
+if (matchingRow) {
+  matchingRow.id = 'service-result';
+  window.addEventListener('pageshow', event => {
+    if (!event.persisted) requestAnimationFrame(() => matchingRow.scrollIntoView({ block: 'center', behavior: 'instant' }));
+  });
+}

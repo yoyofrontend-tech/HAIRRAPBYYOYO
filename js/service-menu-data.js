@@ -61,3 +61,14 @@ const serviceMenus = (() => {
   ];
   return {women, men, makeup};
 })();
+
+const categoryGroups = {
+  colour: ['Hair colour', 'Luxury colour'],
+  hair: ['Hair cut', 'Hair styling', 'Beard', 'Extra care', 'Hair treatments', 'Hair care',
+    'Hair texture', 'Lux volumizer', 'Hair toppers', 'Hair extensions · per strand'],
+  makeup: ['Bridal packages', 'Side bride & kids', 'Pre-bride packages', 'Groom packages', 'Pre-groom packages'],
+  skin: ['Ethereal facials', 'Elegant facials', 'Clean up', 'Express facial masks', 'De-tan',
+    'Body therapy', 'Threading', 'Waxing', 'Brazilian wax', 'Hair removal'],
+  nails: ['Nail extensions & nail art', 'Manicure', 'Pedicure'],
+  massage: ['Head massage'],
+};

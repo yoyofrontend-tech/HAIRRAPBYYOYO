@@ -1,22 +1,6 @@
 const inventory = new Map(products.map(product => [product.id, product]));
 const catalogueRoot = new URL('../', document.currentScript.src);
 const previewSize = 4;
-const brandNames = {
-  'MILK SHAKE (MS)': 'milk_shake',
-  'BIOTOP PROFESSIONAL': 'Biotop Professional',
-  SKEYNDOR: 'Skeyndor',
-  GK: 'GK Hair',
-  '18.21': '18.21 Man Made',
-  'GRAHAM HILL (GH)': 'Graham Hill',
-  KEUNE: 'Keune',
-  MINTREE: 'Mintree',
-  PH: 'pH Laboratories',
-  OLAPLEX: 'Olaplex',
-  BOTOLISS: 'Botoliss',
-  SHEA: 'Shea',
-  'SCHWARZKOPF PROFESSIONAL': 'Schwarzkopf Professional',
-  KANPEKI: 'Kanpeki',
-};
 function element(tag, className, text) {
   const node = document.createElement(tag);
   node.className = className;

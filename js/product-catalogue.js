@@ -657,3 +657,20 @@ const productCatalogue = [
     [613, "assets/images/products/9.webp", "Protective Cream SPF 50+", "75 ml"],
   ] },
 ];
+
+const brandNames = {
+  'MILK SHAKE (MS)': 'milk_shake',
+  'BIOTOP PROFESSIONAL': 'Biotop Professional',
+  SKEYNDOR: 'Skeyndor',
+  GK: 'GK Hair',
+  '18.21': '18.21 Man Made',
+  'GRAHAM HILL (GH)': 'Graham Hill',
+  KEUNE: 'Keune',
+  MINTREE: 'Mintree',
+  PH: 'pH Laboratories',
+  OLAPLEX: 'Olaplex',
+  BOTOLISS: 'Botoliss',
+  SHEA: 'Shea',
+  'SCHWARZKOPF PROFESSIONAL': 'Schwarzkopf Professional',
+  KANPEKI: 'Kanpeki',
+};
