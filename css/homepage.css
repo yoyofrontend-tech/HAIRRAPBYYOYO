@@ -10,6 +10,8 @@
 html { scroll-padding-top: 104px; }
 .wrap { width: var(--hero-frame); }
 .homepage-content > .section { padding-block-end: clamp(80px, 7vw, 100px); }
+.homepage-content > :is(#celeb-reels, #membership, #about, #experience) { padding-block-end: 48px; }
+.homepage-content > #celeb-reels .reel-stage { padding-block-end: 0; }
 .homepage-content .membership-inclusions { margin-block-end: 0; }
 .hero-inner {
   border: 1px solid #fffdf0bc;
