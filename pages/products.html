@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700&amp;family=Playfair+Display:wght@500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/homepage.css?v=62">
+  <link rel="stylesheet" href="../css/homepage.css?v=66">
   <link rel="stylesheet" href="../css/footer.css?v=3">
 </head>
 <body>
@@ -44,7 +44,19 @@
         <label class="product-search"><span>Search products</span><input id="product-search" type="search" placeholder="Search by product or brand" autocomplete="off"></label>
         <label class="product-brand"><span>Explore Brands</span><select id="product-brand" aria-controls="catalogue-sections"><option value="">All brands and ranges</option></select></label>
       </div>
-      <div class="catalogue-filters" id="catalogue-filters" role="group" aria-label="Filter products by category"></div>
+      <div class="category-picker">
+        <button class="category-picker-arrow" type="button" aria-label="Previous product filters" aria-controls="catalogue-filters" hidden>
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+            <path d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3646L8 12.0007L14.364 5.63672L15.7782 7.05093L10.8284 12.0007Z"/>
+          </svg>
+        </button>
+        <div class="catalogue-filters category-picker-track" id="catalogue-filters" role="group" aria-label="Filter products by category"></div>
+        <button class="category-picker-arrow" type="button" aria-label="Next product filters" aria-controls="catalogue-filters" hidden>
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+            <path d="M13.1717 12.0007L8.22192 7.05093L9.63614 5.63672L16.0001 12.0007L9.63614 18.3646L8.22192 16.9504L13.1717 12.0007Z"/>
+          </svg>
+        </button>
+      </div>
     </div>
     <div class="sr-only" id="catalogue-status" role="status"></div>
     <div class="catalogue-sections" id="catalogue-sections"></div>
@@ -53,7 +65,7 @@
   <footer class="site-footer"><div class="footer-container">
       <div class="footer-top">
         <div class="footer-brand"><a class="footer-brand-name" href="../index.html">HAIR RAP BY YOYO</a><p>Thoughtful hair and beauty experiences, made personal in the heart of Ahmedabad.</p><a class="footer-cta" href="https://wa.me/919099938886?text=Hi%2C%20I%27d%20like%20to%20book%20an%20appointment%20at%20Hair%20Rap%20by%20Yoyo." target="_blank" rel="noopener noreferrer">Book an appointment ↗</a></div>
-        <div class="footer-column"><h2>Explore</h2><nav aria-label="Footer navigation"><a href="../index.html">Home</a><a href="services.html">Services</a><a href="products.html">Products</a><a href="portfolio.html">Portfolio</a><a href="../index.html#cafe">Café</a><a href="membership.html">Membership</a><a href="contact.html">Contact</a></nav></div>
+        <div class="footer-column"><h2>Explore</h2><nav aria-label="Footer navigation"><a href="../index.html">Home</a><a href="services.html">Services</a><a href="products.html">Products</a><a href="portfolio.html">Portfolio</a><a href="membership.html">Membership</a><a href="contact.html">Contact</a></nav></div>
         <div class="footer-column"><h2>Get in touch</h2><div class="footer-links"><a href="tel:+919099938886">+91 90999 38886</a><a href="mailto:hello@hairrapbyyoyo.com">hello@hairrapbyyoyo.com</a><a href="https://www.instagram.com/hair_rap_by_yoyo/" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div><p>Daily, 10:00 AM – 9:00 PM</p></div>
         <div class="footer-column"><h2>Visit the salon</h2><address>1st Floor, Shilp Satved,<br>Sindhubhavan Road, opposite Mango Restaurant,<br>Bodakdev, Ahmedabad, Gujarat 380054</address><a class="footer-link" href="https://www.google.com/maps/search/?api=1&amp;query=Hair+Rap+by+Yoyo+Shilp+Satved+Ahmedabad" target="_blank" rel="noopener noreferrer">Get directions ↗</a></div>
       </div>
@@ -62,7 +74,8 @@
   <script src="../js/interior.js"></script>
   <script src="../js/product-data.js"></script>
   <script src="../js/product-catalogue.js?v=5"></script>
-  <script src="../js/products.js?v=10"></script>
+  <script src="../js/category-picker.js"></script>
+  <script src="../js/products.js?v=11"></script>
   <script src="../js/site-search.js?v=3"></script>
 </body>
 </html>

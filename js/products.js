@@ -64,6 +64,7 @@ function setupCatalogue(results) {
     for (const button of filters.children) {
       button.setAttribute('aria-pressed', String(button.dataset.category === key));
     }
+    revealSelectedFilter();
     if (syncAddress) updateResults();
     else renderProducts();
   }
@@ -89,7 +90,7 @@ function setupCatalogue(results) {
       viewAll.addEventListener('click', () => {
         selectCategory(group.key);
         document.getElementById(heading.id).focus({ preventScroll: true });
-        filters.scrollIntoView({ block: 'start' });
+        filters.parentElement.scrollIntoView({ block: 'start' });
       });
       titleRow.append(viewAll);
     }
@@ -173,6 +174,7 @@ function setupCatalogue(results) {
     button.addEventListener('click', () => selectCategory(key));
     filters.append(button);
   }
+  const revealSelectedFilter = setupCategoryPicker(filters);
   search.value = initialFilters.get('q') || '';
   const initialBrand = initialFilters.get('brand');
   if (brands.has(initialBrand) || initialBrand === 'range:911') brandFilter.value = initialBrand;

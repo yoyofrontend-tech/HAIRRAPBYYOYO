@@ -143,7 +143,13 @@ html { scroll-padding-top: 104px; }
   font: 500 clamp(14px, 1.24vw, 18px)/1.55 Manrope, sans-serif;
   text-wrap: pretty;
 }
-.hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: clamp(16px, 2.2vw, 26px); }
+.hero-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 185px), 1fr));
+  gap: 10px;
+  max-width: 390px;
+  margin-top: clamp(16px, 2.2vw, 26px);
+}
 .glass-button {
   display: inline-flex;
   align-items: center;
@@ -157,6 +163,7 @@ html { scroll-padding-top: 104px; }
   color: #302b21;
   font: 700 11px/1.2 Inter, sans-serif;
   letter-spacing: .075em;
+  text-align: center;
   text-transform: uppercase;
   transition: background .2s, transform .2s;
 }
@@ -312,7 +319,6 @@ html { scroll-padding-top: 104px; }
   .topbar { gap: 4px; padding-inline: 9px 5px; }
   .logo img { width: 101px; }
   .header-actions { gap: 0; }
-  .hero-actions { display: grid; }
   .hero-social a { width: 33px; height: 33px; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -357,9 +363,6 @@ html { scroll-padding-top: 104px; }
 .product-search span,.product-brand span{display:block;margin-bottom:8px;font:600 11px Inter,sans-serif;text-transform:uppercase;letter-spacing:.08em;color:#625d53}
 .product-search input,.product-brand select{width:100%;height:48px;border:1px solid #dcd6cb;background:#faf9f7;border-radius:10px;padding:0 14px;font:14px Inter,sans-serif;color:#34332e}
 .catalogue-filters{display:flex;flex-wrap:wrap;gap:8px;scroll-margin-top:24px}
-#catalogue-filters{flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain}
-#catalogue-filters .catalogue-filter{flex:none;white-space:nowrap}
-#catalogue-filters .catalogue-filter:focus-visible{outline-offset:-4px}
 .catalogue-filter,.catalogue-view-all{min-height:44px;border:1px solid #dcd6cb;border-radius:99px;padding:8px 16px;background:#fff;color:#443b2d;cursor:pointer;font:600 13px Inter,sans-serif}
 .catalogue-filter:hover,.catalogue-view-all:hover{background:#f6f1e8;border-color:#a4967a}
 .catalogue-filter[aria-pressed="true"],.catalogue-filter[aria-current="true"]{background:#26231d;border-color:#26231d;color:#fff}
@@ -689,28 +692,36 @@ html { scroll-padding-top: 104px; }
 .services{position:relative;padding-block:clamp(100px,5vw,250px)}
 .service-intro .service-eyebrow span{padding:0 8px;color:#c1aa77}
 .service-title-dot{color:#a58c59}
-.service-category-picker {
+.category-picker {
   display: flex;
   align-items: center;
   gap: 6px;
-  margin-block: 24px;
+  min-width: 0;
+  scroll-margin-top: 24px;
 }
-.service-category-links {
+.service-page .category-picker { margin-block: 24px; }
+.category-picker-track {
   position: relative;
   flex: 1;
   flex-wrap: nowrap;
   min-width: 0;
   overflow: hidden;
 }
-.service-category-links .catalogue-filter {
+.catalogue-page .category-picker-track {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+.catalogue-page .category-picker-track::-webkit-scrollbar { display: none; }
+.category-picker-track .catalogue-filter {
   display: inline-flex;
   flex: none;
   align-items: center;
-  padding-inline: clamp(10px, 1.05vw, 13px);
   white-space: nowrap;
 }
-.service-category-links a:focus-visible { outline-offset: -3px; }
-.service-category-arrow {
+.service-page .category-picker-track .catalogue-filter { padding-inline: clamp(10px, 1.05vw, 13px); }
+.category-picker-track .catalogue-filter:focus-visible { outline-offset: -3px; }
+.category-picker-arrow {
   flex: 0 0 40px;
   height: 44px;
   padding: 0;
@@ -721,9 +732,9 @@ html { scroll-padding-top: 104px; }
   font-size: 20px;
   cursor: pointer;
 }
-.service-category-arrow:not([hidden]) { display: grid; place-items: center; }
-.service-category-arrow:hover { background: #f6f1e8; }
-.service-category-arrow[aria-disabled="true"] { opacity: .4; cursor: default; }
+.category-picker-arrow:not([hidden]) { display: grid; place-items: center; }
+.category-picker-arrow:hover { background: #f6f1e8; }
+.category-picker-arrow[aria-disabled="true"] { opacity: .4; cursor: default; }
 .service-showcase {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);

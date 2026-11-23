@@ -100,50 +100,7 @@ const activeCategory = serviceCategoryLinks.find(link => link.dataset.serviceCat
   ?? serviceCategoryLinks[0];
 showServiceCategory(activeCategory);
 
-const categoryTrack = document.querySelector('#service-categories');
-const categoryPicker = categoryTrack.parentElement;
-const [previousCategories, nextCategories] = categoryPicker.querySelectorAll('button');
-const reducedCategoryMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-function syncCategoryArrows() {
-  const atStart = categoryTrack.scrollLeft <= 1;
-  const atEnd = categoryTrack.scrollLeft + categoryTrack.clientWidth >= categoryTrack.scrollWidth - 1;
-  previousCategories.setAttribute('aria-disabled', String(atStart));
-  nextCategories.setAttribute('aria-disabled', String(atEnd));
-}
-
-function fitCategoryFilters() {
-  const fits = categoryTrack.scrollWidth <= categoryPicker.clientWidth + 1;
-  previousCategories.hidden = nextCategories.hidden = fits;
-  const start = activeCategory.offsetLeft;
-  const end = start + activeCategory.offsetWidth;
-  if (start < categoryTrack.scrollLeft) categoryTrack.scrollLeft = start;
-  else if (end > categoryTrack.scrollLeft + categoryTrack.clientWidth) {
-    categoryTrack.scrollLeft = end - categoryTrack.clientWidth;
-  }
-  syncCategoryArrows();
-}
-
-function moveCategoryFilters(forward) {
-  const left = categoryTrack.scrollLeft;
-  const right = left + categoryTrack.clientWidth;
-  const next = forward
-    ? serviceCategoryLinks.find(link => link.offsetLeft + link.offsetWidth > right + 1)
-    : serviceCategoryLinks.findLast(link => link.offsetLeft < left - 1);
-  if (!next) return;
-
-  categoryTrack.scrollTo({
-    left: forward ? next.offsetLeft : next.offsetLeft + next.offsetWidth - categoryTrack.clientWidth,
-    behavior: reducedCategoryMotion.matches ? 'instant' : 'smooth',
-  });
-}
-
-previousCategories.addEventListener('click', () => moveCategoryFilters(false));
-nextCategories.addEventListener('click', () => moveCategoryFilters(true));
-categoryTrack.addEventListener('scroll', syncCategoryArrows, { passive: true });
-window.addEventListener('resize', fitCategoryFilters);
-document.fonts.ready.then(fitCategoryFilters);
-fitCategoryFilters();
+setupCategoryPicker(document.querySelector('#service-categories'));
 
 const requestedService = serviceParameters.get('service');
 const matchingRow = requestedService && [...servicePriceBody.rows]
