@@ -10,8 +10,8 @@
 html { scroll-padding-top: 104px; }
 .wrap { width: var(--hero-frame); }
 .homepage-content > .section { padding-block-end: clamp(80px, 7vw, 100px); }
-.homepage-content > :is(#celeb-reels, #membership, #about, #experience) { padding-block-end: 48px; }
-.homepage-content > #celeb-reels .reel-stage { padding-block-end: 0; }
+.homepage-content > :is(#celeb-reels, #membership, #about, #experience, #reviews) { padding-block-end: 48px; }
+.homepage-content > .reel-showcase .reel-stage { padding-block-end: 0; }
 .homepage-content .membership-inclusions { margin-block-end: 0; }
 .hero-inner {
   border: 1px solid #fffdf0bc;
@@ -240,6 +240,10 @@ html { scroll-padding-top: 104px; }
 
 @media (max-width: 1120px) {
   :root { --hero-frame: min(860px, calc(100% - 40px)); }
+  .hero { min-height: clamp(600px, 100svh, 820px); }
+  .hero-photo .hero-slide { object-position: var(--hero-focus-small, center 40%); }
+  .hero-inner { display: grid; justify-content: stretch; gap: clamp(12px, 2vw, 22px); }
+  .hero-social { grid-auto-flow: column; justify-self: center; padding: 2px 5px; }
   .topbar { justify-content: space-between; }
   .menu-toggle {
     display: grid;
@@ -287,11 +291,21 @@ html { scroll-padding-top: 104px; }
   .logo img { width: clamp(105px, 34vw, 156px); }
   .book-top { padding: 7px 9px; font-size: 11px; }
   .header-actions { gap: 2px; }
-  .hero { min-height: max(570px, 100svh); }
-  .hero-copy { padding: 100px 0 clamp(22px, 6vh, 46px); }
-  .hero-inner { display: grid; justify-content: stretch; gap: 12px; }
+  .hero { min-height: 0; background: #f4efe6; }
+  .hero-photo {
+    position: relative;
+    inset: auto;
+    grid-row: 1;
+    margin-block-start: 56px;
+    height: clamp(300px, 92vw, 430px);
+  }
+  .hero-photo::after { background: linear-gradient(180deg, transparent 82%, #f4efe6); }
+  .hero-copy { grid-row: 2; margin-block-start: -32px; padding: 0 0 24px; }
+  .hero-inner { gap: 12px; padding: clamp(16px, 5vw, 24px); }
   .hero h1 { text-wrap: wrap; }
-  .hero-social { grid-auto-flow: column; justify-self: start; padding: 2px 5px; }
+  .hero h1 span { display: block; }
+  .hero p { margin-top: 10px; }
+  .hero-actions { gap: 8px; margin-top: 14px; }
   .hero-social a { width: 36px; height: 36px; }
 }
 @media (max-width: 360px) {
@@ -343,6 +357,9 @@ html { scroll-padding-top: 104px; }
 .product-search span,.product-brand span{display:block;margin-bottom:8px;font:600 11px Inter,sans-serif;text-transform:uppercase;letter-spacing:.08em;color:#625d53}
 .product-search input,.product-brand select{width:100%;height:48px;border:1px solid #dcd6cb;background:#faf9f7;border-radius:10px;padding:0 14px;font:14px Inter,sans-serif;color:#34332e}
 .catalogue-filters{display:flex;flex-wrap:wrap;gap:8px;scroll-margin-top:24px}
+#catalogue-filters{flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain}
+#catalogue-filters .catalogue-filter{flex:none;white-space:nowrap}
+#catalogue-filters .catalogue-filter:focus-visible{outline-offset:-4px}
 .catalogue-filter,.catalogue-view-all{min-height:44px;border:1px solid #dcd6cb;border-radius:99px;padding:8px 16px;background:#fff;color:#443b2d;cursor:pointer;font:600 13px Inter,sans-serif}
 .catalogue-filter:hover,.catalogue-view-all:hover{background:#f6f1e8;border-color:#a4967a}
 .catalogue-filter[aria-pressed="true"],.catalogue-filter[aria-current="true"]{background:#26231d;border-color:#26231d;color:#fff}
