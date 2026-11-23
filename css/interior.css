@@ -140,7 +140,6 @@
 }
 
 /* Contact */
-.contact-page { padding-block: clamp(106px, 10vw, 144px) clamp(36px, 5vw, 68px); }
 .about-contact-visit {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
